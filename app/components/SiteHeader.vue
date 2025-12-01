@@ -10,11 +10,11 @@
       </section>
       <section class="header__TopRight">
         <button>
-          <Login class="LoginIcon" />
+          <AssetsLogin class="LoginIcon" />
           Register
         </button>
         <button>
-          <User class="UserIcon" />
+          <AssetsUser class="UserIcon" />
           Login
         </button>
       </section>
@@ -25,25 +25,25 @@
         <div class="header__search">
           <button class="header__shearch-categories">
             <p>All Categories</p>
-            <ArrowDown class="header__ArrowDownIcon" />
+            <AssetsArrowDown class="header__ArrowDownIcon" />
           </button>
           <input id="SearchBar" class="header__inputSearch" type="text" placeholder="Search" >
           <button class="header__buttonShearch">
-            <IconSearch class="header__IconButtonShearch" />
+            <AssetsSearch class="header__IconButtonShearch" />
           </button>
         </div>
       </section>
       <section class="header__bottomRight">
         <button class="header__panier">
           <div class="header__IconShoppingCart_PositionPatcher">
-            <IconShoppingCart class="header__IconShoppingCart" />
+            <AssetsShoppingCart class="header__IconShoppingCart" />
           </div>
           <div class="header__panier-notification">
             <p class="header__notification-number">1</p>
           </div>
         </button>
         <button class="header__profile">
-          <img >
+          <!-- <img > -->
         </button>
       </section>
     </section>
