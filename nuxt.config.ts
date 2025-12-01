@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     // '@nuxtjs/image',
     // '@nuxtjs/test-utils',
   ],
+  // typescript: {
+  //   typeCheck: true
+  // },
   vite: {
     css: {
       preprocessorOptions: {

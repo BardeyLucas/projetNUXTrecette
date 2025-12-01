@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <DefaultLayout>
+  <NuxtLayout>
     <SiteHeader />
     <main class="page-content">
       <nav class="sectionTemporaire--nav">
@@ -14,5 +14,5 @@ import { RouterLink } from 'vue-router'
       </nav>
       <NuxtPage />
     </main>
-  </DefaultLayout>
+  </NuxtLayout>
 </template>
