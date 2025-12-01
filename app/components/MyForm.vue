@@ -6,15 +6,15 @@ const password = ref('')
 
 const onSubmit = () => {
   // POST SUR L'API
-  console.log('Submit form')
-  console.log(email.value, password.value)
+  // console.log('Submit form')
+  // console.log(email.value, password.value)
 }
 </script>
 <template>
   <form @submit.prevent="onSubmit">
-    <input type="text" v-model="email" />
+    <input v-model="email" type="text" >
 
-    <input type="password" v-model="password" />
+    <input v-model="password" type="password" >
 
     <MyButton>Submit</MyButton>
   </form>

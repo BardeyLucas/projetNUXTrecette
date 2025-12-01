@@ -8,7 +8,7 @@ defineProps<{
 </script>
 <template>
   <div class="character">
-    <img :src="`/images/${img}`" />
+    <img :src="`/images/${img}`" >
     <MyTitle as="h3">{{ prenom }} {{ nom }}</MyTitle>
     <p>{{ description }}</p>
   </div>

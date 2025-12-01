@@ -39,9 +39,9 @@ defineProps<{
       'button--disabled': state === 'disabled',
     }"
   >
-    <div class="arrow-left"></div>
-    <slot></slot>
-    <div class="arrow-right"></div>
+    <div class="arrow-left"/>
+    <slot/>
+    <div class="arrow-right"/>
   </button>
   <button
     v-if="content === 'IconOnly'"
@@ -58,7 +58,7 @@ defineProps<{
       'button--IconOnly': content === 'IconOnly',
     }"
   >
-    <div class="arrow-top"></div>
+    <div class="arrow-top"/>
   </button>
 </template>
 
