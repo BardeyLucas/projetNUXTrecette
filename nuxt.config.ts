@@ -4,13 +4,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
   modules: [
-    '@nuxt/eslint'
+    // '@nuxt/eslint'
     // '@nuxtjs/image',
     // '@nuxtjs/test-utils',
   ],
   // typescript: {
   //   typeCheck: true
   // },
+
+  runTimeConfig: {
+    public: {
+      apiUrl:''
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {

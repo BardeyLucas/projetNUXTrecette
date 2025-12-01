@@ -203,3 +203,14 @@
 
 // .page-content {
 // }
+
+.card--test {
+  background-color: rgb(29, 29, 29);
+  margin: 20px;
+  padding: 10px;
+
+  & > a {
+    color: rgb(223, 223, 223);
+    text-decoration: none;
+  }
+}
