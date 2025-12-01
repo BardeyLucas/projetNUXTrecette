@@ -3,11 +3,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
-  // modules: [
-  //   '@nuxtjs/eslint',
-  //   '@nuxtjs/image',
-  //   '@nuxtjs/test-utils',
-  // ],
+  modules: [
+    '@nuxt/eslint'
+    // '@nuxtjs/image',
+    // '@nuxtjs/test-utils',
+  ],
   vite: {
     css: {
       preprocessorOptions: {

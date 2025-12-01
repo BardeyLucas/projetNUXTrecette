@@ -21,13 +21,13 @@
     </nav>
     <section class="header__bottom">
       <section class="header__bottomLeft">
-        <img class="header__logo" src="/images/MainLogo.png" alt="Logo" />
+        <img class="header__logo" src="/images/MainLogo.png" alt="Logo" >
         <div class="header__search">
           <button class="header__shearch-categories">
             <p>All Categories</p>
             <ArrowDown class="header__ArrowDownIcon" />
           </button>
-          <input class="header__inputSearch" id="SearchBar" type="text" placeholder="Search" />
+          <input id="SearchBar" class="header__inputSearch" type="text" placeholder="Search" >
           <button class="header__buttonShearch">
             <IconSearch class="header__IconButtonShearch" />
           </button>
@@ -43,7 +43,7 @@
           </div>
         </button>
         <button class="header__profile">
-          <img />
+          <img >
         </button>
       </section>
     </section>
