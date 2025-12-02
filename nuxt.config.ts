@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   //   typeCheck: true
   // },
 
-  runTimeConfig: {
+  runtimeConfig: {
     public: {
       apiUrl:''
     }
