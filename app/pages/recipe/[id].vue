@@ -4,7 +4,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 
 const { data : recipe, error } = await useAsyncData(`recipe-${route.params.id}`, async () => {
-  const { data } = await $fetch<{ data : Recipe }>(
+  const { data } = await $fetch<APIReseponse<Recipe[]>>(
     `${config.public.apiUrl}/api/recipes/${route.params.id}`
   )
   return data
