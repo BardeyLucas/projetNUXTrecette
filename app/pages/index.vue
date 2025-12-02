@@ -13,12 +13,12 @@ const { data : recipes, error } = await useAsyncData('recipes',async () => {
   <div>
     <h1>Home</h1>
     <div v-for="(recipe, index) in recipes" :key="index" class="card--test">
-        <NuxtLink :to="`/recipe/${recipe.recipe_id}`">
+      <NuxtLink :to="`/recipe/${recipe.recipe_id}`">
         <img :src="`/images/${recipe.image_url}`" alt="Recipe Image">
         <h2>{{ recipe.title }}</h2>
         <div class="test__info"><p>{{ recipe?.cuisine_name }}</p><p>{{ recipe?.goal_name }}</p></div><div><p>{{ recipe?.diet_name }}</p><p>{{ recipe?.allergy_name }}</p></div>
-        </NuxtLink>
-      </div>
-      <p>Data des recettes {{ recipes }} {{ error }}</p>
+      </NuxtLink>
+    </div>
+    <p>Data des recettes {{ recipes }} {{ error }}</p>
   </div>
 </template>

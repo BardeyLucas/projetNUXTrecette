@@ -10,15 +10,15 @@ type Recipe = {
 }
 
 type FullRecipe = Recipe & {
-    instructions: {
-        instruction_id: number;
-        step_number: number;
-        description: string;
-    }[];
-    ingredients: {
-        ingredient_id: number;
-        name: string;
-        unit: string;
-        quantity: string;
-    }[];
+  instructions: {
+    instruction_id: number;
+    step_number: number;
+    description: string;
+  }[];
+  ingredients: {
+    ingredient_id: number;
+    name: string;
+    unit: string;
+    quantity: string;
+  }[];
 }

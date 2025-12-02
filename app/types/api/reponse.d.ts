@@ -1,4 +1,4 @@
 type APIReseponse<T> = {
-    success: boolean
-    data?: T
+  success: boolean 
+  data?: T
 }
