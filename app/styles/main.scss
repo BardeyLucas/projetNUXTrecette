@@ -209,6 +209,9 @@ body {
 // .page-content {
 // }
 
+
+//Contenu temporaire
+
 .card--test {
   background-color: rgb(29, 29, 29);
   margin: 20px;
@@ -218,4 +221,11 @@ body {
     color: rgb(223, 223, 223);
     text-decoration: none;
   }
+}
+
+.recipes__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(5) rem(20);
+  margin-bottom: rem(20);
 }
