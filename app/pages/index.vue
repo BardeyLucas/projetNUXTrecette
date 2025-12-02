@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Search from '~/components/assets/Search.vue'
 
 const search = ref('')
 
 const config = useRuntimeConfig()
 // import { RouterLink } from 'vue-router'
-const [{ data: recipes, error: recipeError }, { data: cuisines, error: cuisineError }] =
+const [{ data: recipes, error: recipeError }, { data: cuisines }] =
   await Promise.all([
     useAsyncData('recipes', async () => {
       const { data } = await $fetch<APIReseponse<Recipe[]>>(
@@ -21,17 +20,17 @@ const [{ data: recipes, error: recipeError }, { data: cuisines, error: cuisineEr
     })
   ])
 
-function onCheckboxInput($event: Event) {
-    const target = $event.target
-    if(!(target instanceof HTMLInputElement)) return
-    page.value = 1
-    const value = target.value
-    if (!filters.value.includes(value)) {
-        filters.value.push(value)
-    } else {
-        const index = filters.value.findIndex((v => v === value))
-        filters.value.splice(index, 1)
-    }
+function onCheckboxInput ($event: Event) {
+  const target = $event.target
+  if(!(target instanceof HTMLInputElement)) return
+  page.value = 1
+  const value = target.value
+  if (!filters.value.includes(value)) {
+    filters.value.push(value)
+  } else {
+    const index = filters.value.findIndex((v => v === value))
+    filters.value.splice(index, 1)
+  }
 }
 
 const filters = ref<Cuisine['name'][]>([])
@@ -51,8 +50,8 @@ const filteredRecipes = computed(() => {
 const page = ref(1)
 const recipesPerPage = 2
 const totalPages = computed(() => {
-    const len = filteredRecipes.value?.length ?? 0
-    return Math.max(1, Math.ceil(len / recipesPerPage))
+  const len = filteredRecipes.value?.length ?? 0
+  return Math.max(1, Math.ceil(len / recipesPerPage))
 })
 
 // On affiche seulement les deux recettes de la page actuelle
@@ -65,23 +64,23 @@ const paginatedRecipes = computed(() => {
 if (recipeError && recipeError.value) throw new Error('Failed to fetch recipes')
 
 watch(() => [filters.value, search.value], () => {
-    page.value = 1
+  page.value = 1
 })
 </script>
 
 <template>
   <div>
-      <h1>Home</h1>
-      <h2>Filter by Cuisine</h2>
-      <input v-model="search" type="text" placeholder="Search..." />
-      <p>{{ search }}</p>
-      <p>Page {{ page }} / {{ totalPages }}</p>
-      <input type="number" v-model="page" min="1" :max="totalPages" />
+    <h1>Home</h1>
+    <h2>Filter by Cuisine</h2>
+    <input v-model="search" type="text" placeholder="Search..." >
+    <p>{{ search }}</p>
+    <p>Page {{ page }} / {{ totalPages }}</p>
+    <input v-model="page" type="number" min="1" :max="totalPages" >
     <div class="recipes__filter">
-        <div v-for="cuisine in cuisines" :key="cuisine.cuisine_id">
-          <label for="">{{ cuisine.name }}</label>
-          <input type="checkbox" :value="cuisine.name" @input="onCheckboxInput"/>
-        </div>
+      <div v-for="cuisine in cuisines" :key="cuisine.cuisine_id">
+        <label for="">{{ cuisine.name }}</label>
+        <input type="checkbox" :value="cuisine.name" @input="onCheckboxInput">
+      </div>
     </div>
     <div v-for="(recipe, index) in paginatedRecipes" :key="index" class="card--test">
       <NuxtLink :to="`/recipe/${recipe.recipe_id}`">
