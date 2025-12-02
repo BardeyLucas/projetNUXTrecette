@@ -5,18 +5,21 @@ const search = ref('')
 
 const config = useRuntimeConfig()
 // import { RouterLink } from 'vue-router'
-const { data : recipes, error } = await useAsyncData('recipes',async () => {
-  const { data } = await $fetch<APIReseponse<Recipe[]>>(
-    `${config.public.apiUrl}/api/recipes`
-  )
-  return data
-})
-const { data : cuisines } = await useAsyncData('cuisines',async () => {
-  const { data } = await $fetch<APIReseponse<Cuisine[]>>(
-    `${config.public.apiUrl}/api/cuisines`
-  )
-  return data
-})
+const [{ data: recipes, error: recipeError }, { data: cuisines, error: cuisineError }] =
+  await Promise.all([
+    useAsyncData('recipes', async () => {
+      const { data } = await $fetch<APIReseponse<Recipe[]>>(
+        `${config.public.apiUrl}/recipes`
+      )
+      return data
+    }),
+    useAsyncData('cuisines', async () => {
+      const { data } = await $fetch<APIReseponse<Cuisine[]>>(
+        `${config.public.apiUrl}/cuisines`
+      )
+      return data
+    })
+  ])
 
 function onCheckboxInput($event: Event) {
     const target = $event.target
@@ -59,7 +62,7 @@ const paginatedRecipes = computed(() => {
   return filteredRecipes.value.slice(start, end)
 })
 
-if (error && error.value) throw new Error('Failed to fetch recipes')
+if (recipeError && recipeError.value) throw new Error('Failed to fetch recipes')
 
 watch(() => [filters.value, search.value], () => {
     page.value = 1
@@ -87,6 +90,6 @@ watch(() => [filters.value, search.value], () => {
         <div class="test__info"><p>{{ recipe?.cuisine_name }}</p><p>{{ recipe?.goal_name }}</p></div><div><p>{{ recipe?.diet_name }}</p><p>{{ recipe?.allergy_name }}</p></div>
       </NuxtLink>
     </div>
-    <p>Data des recettes {{ recipes }} {{ error }}</p>
+    <p>Data des recettes {{ recipes }} {{ recipeError }}</p>
   </div>
 </template>
