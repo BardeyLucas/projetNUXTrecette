@@ -5,12 +5,16 @@ export default defineNuxtConfig({
   css : ['~/styles/main.scss'],
   modules: [
     '@nuxt/eslint'
-    // '@nuxtjs/image',
-    // '@nuxtjs/test-utils',
   ],
-  // typescript: {
-  //   typeCheck: true
-  // },
+  typescript: {
+    typeCheck: true
+  },
+
+  runtimeConfig: {
+    public: {
+      apiUrl:''
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {
