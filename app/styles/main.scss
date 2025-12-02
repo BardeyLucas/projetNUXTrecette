@@ -1,6 +1,11 @@
 @use './base.scss' as *;
 @use './foundations/functions' as *;
 
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 .sectionTemporaire--nav {
   display: flex;
   gap: rem(16);
