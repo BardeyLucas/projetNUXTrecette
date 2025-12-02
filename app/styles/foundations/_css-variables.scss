@@ -6,6 +6,9 @@
   --color-primary: green;
 
   --font-size-base: #{rem(14)};
+
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montez', cursive;
 }
 
 @media (prefers-color-scheme: dark) {
