@@ -4,13 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
   modules: [
-    // '@nuxt/eslint'
-    // '@nuxtjs/image',
-    // '@nuxtjs/test-utils',
+    '@nuxt/eslint'
   ],
-  // typescript: {
-  //   typeCheck: true
-  // },
+  typescript: {
+    typeCheck: true
+  },
 
   runtimeConfig: {
     public: {
