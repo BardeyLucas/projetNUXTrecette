@@ -1,4 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts">
+const token = useCookie('recipe-token')
+const isConnected = computed(() => !!token.value)
+</script>
+
 <template>
   <header class="header">
     <nav class="header__top">
@@ -42,7 +47,7 @@
             <p class="header__notification-number">1</p>
           </div>
         </button>
-        <button class="header__profile">
+        <button class="header__profile" :class="{ 'header__profile--connected': isConnected == true }">
           <!-- <img > -->
         </button>
       </section>
