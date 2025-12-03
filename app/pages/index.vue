@@ -8,13 +8,13 @@ const [{ data: recipes, error: recipeError }, { data: cuisines }] =
   await Promise.all([
     useAsyncData('recipes', async () => {
       const { data } = await $fetch<APIReseponse<Recipe[]>>(
-        `${config.public.apiUrl}/recipes`
+        `${config.public.apiUrl}/API/recipes`
       )
       return data
     }),
     useAsyncData('cuisines', async () => {
       const { data } = await $fetch<APIReseponse<Cuisine[]>>(
-        `${config.public.apiUrl}/cuisines`
+        `${config.public.apiUrl}/API/cuisines`
       )
       return data
     })
@@ -66,6 +66,7 @@ if (recipeError && recipeError.value) throw new Error('Failed to fetch recipes')
 watch(() => [filters.value, search.value], () => {
   page.value = 1
 })
+
 </script>
 
 <template>

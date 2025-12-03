@@ -2,45 +2,34 @@
 const email = ref('')
 const password = ref('')
 const config = useRuntimeConfig()
-
-async function onSubmit () {
+const postLogin = async () => {
   try {
-    console.log('=> Api call to login')
-
-    const response = await fetch(
-      `${config.public.apiUrl}/api/users/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email.value,
-          password: password.value
-        })
-      }
-    )
-
+    const response = await fetch(`${config.public.apiUrl}/API/users/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value
+      })
+    })
     const json = await response.json()
-
+    console.log(json)
     const token = json.data.token
-    
-    const cookie = useCookie('recipe_token')
+    const cookie = useCookie('recipe-token')
     cookie.value = token
-
     console.log(token)
-
-  } catch (err) {
-    console.error(err)
+    if (token) {
+      navigateTo('/dashboard')
+    }
+  } catch (error) {
+    console.error('Login failed:', error)
   }
 }
-
 </script>
 <template>
   <div>
     <h1>Connexion</h1>
-    <form action="" @submit.prevent="onSubmit">
+    <form action="" @submit.prevent="postLogin">
       <label for="email">Email</label>
       <input id="email" v-model="email" type="text">
       <label for="password">Password</label>
