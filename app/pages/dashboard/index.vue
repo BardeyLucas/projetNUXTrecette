@@ -13,14 +13,12 @@ const config = useRuntimeConfig()
 
 await useAsyncData('my-recipes', () => {
   const cookie = useCookie('recipe-token')
-  return $fetch(`${config.public.apiUrl}/API/recipes/mine`, {
+  return $fetch(`${config.public.apiUrl}/api/recipes/my-recipes`, {
     headers: {
       Authorization: `Bearer ${cookie.value}`
     }
   })
-}
-
-)
+})
 
 </script>
 
@@ -28,6 +26,7 @@ await useAsyncData('my-recipes', () => {
   <div class="p-dashboard">
     <h1>Dashboard</h1>
     <button @click="onLogoutClick">Logout</button>
+    
   </div>
 </template>
 
