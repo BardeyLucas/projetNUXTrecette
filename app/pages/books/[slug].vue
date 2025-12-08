@@ -15,7 +15,7 @@ const { urlFor } = useSanityImage()
     v-if="book"
     class="livre"
   >
-    <a href="/">&larr; Back to books</a>
+    <a href="/books/">&larr; Back to books</a>
     <img
       v-if="book.image"
       :src="urlFor(book.image)?.width(550).height(310).url()"
