@@ -20,6 +20,7 @@ await useAsyncData('my-recipes', () => {
   })
 })
 
+
 </script>
 
 <template>

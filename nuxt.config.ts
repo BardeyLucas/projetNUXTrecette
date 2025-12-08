@@ -4,8 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
   modules: [
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@nuxtjs/sanity'
   ],
+  
+  sanity: {
+    projectId: 'nhw1hulo',
+    dataset: 'production'
+  },
+
   typescript: {
     typeCheck: true
   },

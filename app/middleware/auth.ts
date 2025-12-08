@@ -6,7 +6,11 @@ export default defineNuxtRouteMiddleware(() => {
     return navigateTo('/login')
   }
   const decoded = jwtDecode(token.value)
-  if (!(decoded.exp && decoded.exp > (Date.now() / 1000))) {
+  if (!(decoded.exp && decoded.exp> (Date.now() / 1000))) {
     return navigateTo('/login')
   }
+  // const TokenDecoded = jwtDecode(token.value)
+  // if (!(TokenDecoded.exp && TokenDecoded.exp > (Date.now() / 1000))) {
+  //   return TokenDecoded.nbf
+  // }
 })
