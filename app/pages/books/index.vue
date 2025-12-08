@@ -14,7 +14,7 @@ const { data: books } = await useLazySanityQuery<SanityDocument[]>(BOOKS_QUERY)
     <h1 class="text-4xl font-bold mb-8">Books</h1>
     <ul class="flex flex-col gap-y-4">
       <li v-for="book in books" :key="book._id" class="hover:underline">
-        <nuxt-link :to="`/${book.slug.current}`">
+        <nuxt-link :to="`/books/${book.slug.current}`">
           <h2 class="text-xl font-semibold">{{ book.title }}</h2>
           <p>{{ new Date(book.publishedAt).toLocaleDateString() }}</p>
         </nuxt-link>
