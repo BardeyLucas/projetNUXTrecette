@@ -4,8 +4,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
   modules: [
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@nuxtjs/sanity'
   ],
+  
+  sanity: {
+    projectId: 'nhw1hulo',
+    dataset: 'production',
+    visualEditing: {
+      token: process.env.NUXT_SANITY_API_TOKEN,
+      studioUrl: process.env.NUXT_STUDIO_URL,
+      stega: false
+    }
+  },
+
   typescript: {
     typeCheck: true
   },
@@ -16,6 +28,9 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    optimizeDeps: {
+      include: ['react-compiler-runtime', 'react', 'react-dom']
+    },
     css: {
       preprocessorOptions: {
         scss: {

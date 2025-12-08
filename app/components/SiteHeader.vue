@@ -1,7 +1,23 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-const token = useCookie('recipe-token')
+import { jwtDecode } from 'jwt-decode'
+const token = useCookie<string | null>('recipe-token')
 const isConnected = computed(() => !!token.value)
+const user = ref(null)
+watch(token, (newToken) => {
+  if (!newToken) {
+    user.value = null
+    return
+  }
+
+  try {
+    user.value = jwtDecode(newToken)
+    console.log('Utilisateur décodé :', user.value)
+  } catch (e) {
+    console.error('Token invalide :', e)
+    user.value = null
+  }
+}, { immediate: true })
 </script>
 
 <template>
@@ -47,9 +63,11 @@ const isConnected = computed(() => !!token.value)
             <p class="header__notification-number">1</p>
           </div>
         </button>
-        <button class="header__profile" :class="{ 'header__profile--connected': isConnected == true }">
-          <!-- <img > -->
-        </button>
+        <RouterLink to="/dashboard">
+          <button class="header__profile" :class="{ 'header__profile--connected': isConnected == true }">
+            <!-- Profile Button -->
+          </button>
+        </RouterLink>
       </section>
     </section>
   </header>

@@ -20,13 +20,46 @@ await useAsyncData('my-recipes', () => {
   })
 })
 
+const [{ data: allRecipes, error: recipeError }] =
+  await Promise.all([
+    useAsyncData('recipes', async () => {
+      const { data } = await $fetch<APIReseponse<FullRecipe[]>>(
+        `${config.public.apiUrl}/API/recipes`
+      )
+      return data
+    })
+  ])
+
+// champ de recherche (disponible pour le template via v-model="search")
+const user = ref('')
+
+// liste filtrée exposée sous le nom `recipes` (le template utilise déjà `recipes`)
+const recipes = computed(() => {
+  const list = unref(allRecipes) ?? []
+  const q = (user.value || '').toLowerCase().trim()
+  if (!q) return list
+  return list.filter(r =>
+    (r.title ?? '').toLowerCase().includes(q) ||
+    (r.description ?? '').toLowerCase().includes(q)
+  )
+})
 </script>
 
 <template>
   <div class="p-dashboard">
     <h1>Dashboard</h1>
     <button @click="onLogoutClick">Logout</button>
-    
+    <div v-if="recipeError">
+      <p class="text">Error loading recipes: {{ recipeError.message }}</p>
+    </div>
+    <div v-else>
+      <h2 class="text">Recipes:</h2>
+      <p v-for="recipe in recipes" :key="recipe.recipe_id">
+        <span v-if="recipe.user_id">
+          {{ recipe }}
+        </span>
+      </p>
+    </div>
   </div>
 </template>
 
