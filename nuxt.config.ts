@@ -10,7 +10,12 @@ export default defineNuxtConfig({
   
   sanity: {
     projectId: 'nhw1hulo',
-    dataset: 'production'
+    dataset: 'production',
+    visualEditing: {
+      token: process.env.NUXT_SANITY_API_TOKEN,
+      studioUrl: process.env.NUXT_STUDIO_URL,
+      stega: false
+    }
   },
 
   typescript: {
@@ -23,6 +28,9 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    optimizeDeps: {
+      include: ['react-compiler-runtime', 'react', 'react-dom']
+    },
     css: {
       preprocessorOptions: {
         scss: {

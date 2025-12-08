@@ -6,7 +6,7 @@ const BOOKS_QUERY = groq`*[
   && defined(slug.current)
 ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`
 
-const { data: books } = await useSanityQuery<SanityDocument[]>(BOOKS_QUERY)
+const { data: books } = await useLazySanityQuery<SanityDocument[]>(BOOKS_QUERY)
 </script>
 
 <template>

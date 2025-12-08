@@ -7,6 +7,7 @@ type Recipe = {
   goal_name: string;
   diet_name: string;
   allergy_name: string;
+  user_id: number;
 }
 
 type FullRecipe = Recipe & {
@@ -21,4 +22,7 @@ type FullRecipe = Recipe & {
     unit: string;
     quantity: string;
   }[];
+  user_id: {
+    user_id: number;
+  };
 }
