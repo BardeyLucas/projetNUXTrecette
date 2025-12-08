@@ -55,6 +55,7 @@ body {
 .header__TopLeft {
   display: flex;
   gap: rem(32);
+  color: rgb(255, 255, 255);
 }
 
 .header__TopRight {
@@ -98,6 +99,16 @@ body {
     height: rem(72);
     width: auto;
     gap: rem(100);
+
+    & > .header__sectionlogo {
+      height: rem(72);
+      min-width: rem(150);
+
+      & > .header__logo {
+        height: rem(72);
+        width: rem(150);
+      }
+    }
 
     & > .header__search {
       display: flex;

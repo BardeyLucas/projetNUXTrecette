@@ -42,7 +42,9 @@ watch(token, (newToken) => {
     </nav>
     <section class="header__bottom">
       <section class="header__bottomLeft">
-        <img class="header__logo" src="/images/MainLogo.png" alt="Logo" >
+        <RouterLink class="header__sectionlogo" to="/">
+          <img class="header__logo" src="/images/MainLogo.png" alt="Logo" >
+        </RouterLink>
         <div class="header__search">
           <button class="header__shearch-categories">
             <p>All Categories</p>
