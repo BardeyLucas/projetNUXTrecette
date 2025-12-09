@@ -23,7 +23,7 @@ const { urlFor } = useSanityImage()
       class="aspect-video rounded-xl"
       width="550"
       height="310"
-    />
+    >
     <h1 v-if="book.title" class="text-4xl font-bold mb-8">{{ book.title }}</h1>
     <p v-for="categorie in book.categories" :key="categorie._id">by {{ categorie.nom }}</p>
     <p>{{ book.body[0].children[0].text }}</p>

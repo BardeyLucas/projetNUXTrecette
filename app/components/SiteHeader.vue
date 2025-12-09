@@ -13,8 +13,7 @@ watch(token, (newToken) => {
 
   try {
     user.value = jwtDecode(newToken)
-  } catch (e) {
-    console.error('Token invalide :', e)
+  } catch {
     user.value = null
   }
 }, { immediate: true })
