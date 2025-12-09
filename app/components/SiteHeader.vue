@@ -35,10 +35,10 @@ const { urlFor } = useSanityImage()
 <template>
   <header class="header">
     <nav class="header__top">
-      <section class="header__TopLeft">
+      <section class="header__topLeft">
         <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
       </section>
-      <section class="header__TopRight">
+      <section class="header__topRight">
         <button>
           <AssetsLogin class="LoginIcon" />
           Register
