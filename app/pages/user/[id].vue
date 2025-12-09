@@ -9,7 +9,6 @@ const { data : users, error } = await useAsyncData(`user-${route.params.id}`, as
   )
   return data
 })
-console.log('users' + users.value +'error' + error.value)
 if (!users.value || error.value) {
   throw new Error('User not found')
 }

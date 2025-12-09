@@ -1,0 +1,13 @@
+import type { SanityDocument } from '@sanity/types'
+import type { SanityImageSource } from '@sanity/image-url'
+
+type SanitySiteSettings = SanityDocument & {
+  title: string;
+  description: string;
+  logo: SanityImageSource;
+  navigation: Array<{
+    _id: string;
+    label: string;
+    url: string;
+  }>;
+}

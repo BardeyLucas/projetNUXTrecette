@@ -9,5 +9,6 @@
       </nav>
       <NuxtPage />
     </main>
+    <SiteFooter />
   </NuxtLayout>
 </template>

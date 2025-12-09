@@ -13,16 +13,14 @@ const postLogin = async () => {
       })
     })
     const json = await response.json()
-    console.log(json)
     const token = json.data.token
     const cookie = useCookie('recipe-token')
     cookie.value = token
-    console.log(token)
     if (token) {
       navigateTo('/dashboard')
     }
-  } catch (error) {
-    console.error('Login failed:', error)
+  } catch {
+    console.error('Login failed')
   }
 }
 </script>

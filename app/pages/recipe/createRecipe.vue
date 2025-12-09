@@ -88,15 +88,15 @@ async function onSubmit () {
     <form @submit.prevent="onSubmit">
       <div>
         <label for="title">Title</label>
-        <input id="title" v-model="payload.title" placeholder="Title" />
+        <input id="title" v-model="payload.title" placeholder="Title">
       </div>
       <div>
         <label for="description">Description</label>
-        <input id="description" v-model="payload.description" placeholder="Description" />
+        <input id="description" v-model="payload.description" placeholder="Description">
       </div>
       <div>
         <label for="image_url">Image URL</label>
-        <input id="image_url" v-model="payload.image_url" placeholder="Image URL" />
+        <input id="image_url" v-model="payload.image_url" placeholder="Image URL">
       </div>
       <div>
         <label for="cuisine_id">Cuisine</label>
