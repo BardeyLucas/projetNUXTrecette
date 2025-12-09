@@ -6,7 +6,7 @@ type SanitySiteSettings = SanityDocument & {
   description: string;
   logo: SanityImageSource;
   navigation: Array<{
-    _key: string;
+    _id: string;
     label: string;
     url: string;
   }>;

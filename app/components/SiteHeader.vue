@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import type { SanityDocument } from '@sanity/client'
+import type { SanitySiteSettings } from '~/types/cms/site-settings'
 import { jwtDecode } from 'jwt-decode'
 const token = useCookie<string | null>('recipe-token')
 const isConnected = computed(() => !!token.value)
@@ -19,10 +19,11 @@ watch(token, (newToken) => {
 }, { immediate: true })
 
 
-const PARAMETER_QUERY = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
-const { params } = useRoute()
-
-const { data: settingsType } = await useLazySanityQuery<SanityDocument>(PARAMETER_QUERY, params)
+// const PARAMETER_QUERY = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
+// const { data: settingsType } = await useLazySanityQuery<SanityDocument>(PARAMETER_QUERY, params)
+// const { params } = useRoute()
+const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
+const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
 const { urlFor } = useSanityImage()
 
 // import type { SanitySiteSettings } from '~/types/cms/site-settings'
@@ -35,7 +36,7 @@ const { urlFor } = useSanityImage()
   <header class="header">
     <nav class="header__top">
       <section class="header__TopLeft">
-        <RouterLink v-for="item in settingsType?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
+        <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
       </section>
       <section class="header__TopRight">
         <button>
@@ -51,7 +52,7 @@ const { urlFor } = useSanityImage()
     <section class="header__bottom">
       <section class="header__bottomLeft">
         <RouterLink class="header__sectionlogo" to="/">
-          <img v-if="settingsType?.logo" class="header__logo" :src="urlFor(settingsType.logo)?.url()" alt="Logo" >
+          <img v-if="data?.logo" class="header__logo" :src="urlFor(data.logo)?.url()" alt="Logo" >
         </RouterLink>
         <div class="header__search">
           <button class="header__shearch-categories">
