@@ -236,6 +236,50 @@ body {
   &__section_logo {
     
   }
+
+  &__logo {
+  
+  }
+
+  &__rights {
+  
+  }
+
+  &__section_FreshRecipe, &r__section_news, &__section_AboutUs, &__section_newsletter {
+    
+
+    & > h3 {
+    
+    }
+
+    & > ul {
+      
+
+      & > li {
+      
+      }
+    }
+  }
+
+  &__section_newsletter {
+    
+
+    & > h3 {
+    
+    }
+
+    &__newsletter-input {
+      display: flex;
+
+      & > input {
+
+      }
+
+      & > button {
+
+      }
+    }
+  }
 }
 
 // .page-content {
