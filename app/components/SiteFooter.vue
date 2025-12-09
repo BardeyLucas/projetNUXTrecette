@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <footer class="footer">
-    <div>
+    <div class="footer__section_logo">
       <img class="footer__logo" src="/images/MainLogoDarkMode.png" alt="Logo" >
       <p class="footer__rights">All Rights Reserved</p>
     </div>
@@ -15,7 +15,7 @@
         <li>Flavoured Milk</li>
       </ul>
     </div>
-    <div class="footer__news">
+    <div class="footer__section_news">
       <h3>In News</h3>
       <ul>
         <li>Our Blogs</li>
@@ -25,7 +25,7 @@
         <li>Newsletters</li>
       </ul>
     </div>
-    <div class="footer__AboutUs">
+    <div class="footer__section_AboutUs">
       <h3>About US</h3>
       <ul>
         <li>FAQ</li>
@@ -34,7 +34,7 @@
         <li>Contact Us</li>
       </ul>
     </div>
-    <div class="footer__newsletter">
+    <div class="footer__section_newsletter">
       <h3>Juin Our Newsletter</h3>
       <div class="footer__newsletter-input">
         <input type="email" placeholder="email" />
