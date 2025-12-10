@@ -267,10 +267,10 @@ body {
     }
 
     & > ul {
-      
+      padding: 0;
 
       & > li {
-      
+       list-style: none;
       }
     }
   }
@@ -307,6 +307,46 @@ body {
       & > svg {
         width: rem(50);
         height: rem(50);
+      }
+    }
+  }
+  @media (max-width: rem(1500)) {
+    flex-direction: column-reverse;
+    gap: 0;
+
+    &__section_logo {
+      margin-top: rem(25);
+      width: 100%;
+    }
+
+    &__logo {
+      display: none;
+    }
+
+    &__rights {
+      white-space: pre;
+      text-align: center;
+    }
+
+    &__reductRights {
+      display: inline;
+    }
+
+    &__sectionRight {
+      flex-wrap: wrap;
+      gap: rem(50);
+      justify-content: center;
+    }
+  }
+  @media (max-width: rem(1160)) {
+    &__section_newsletter{
+      margin: rem(20);
+    }
+  }
+  @media (max-width: rem(550)) {
+    &__newsletter-input{
+      & > input {
+        max-width: calc(100% - rem(50));
       }
     }
   }
