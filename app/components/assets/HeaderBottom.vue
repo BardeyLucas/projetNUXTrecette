@@ -270,6 +270,26 @@ const { urlFor } = useSanityImage()
       width: rem(40);
       height: rem(40);
     }
+
+    &__search{
+      height: rem(25);
+      gap: rem(10);
+    }  
+    
+    &__shearch-categories{
+      padding: 0 rem(8);
+      gap: rem(5);
+      &>p{
+        font-size: rem(12);
+      }
+    }
+    &__ArrowDownIcon {
+      width: rem(15);
+      height: rem(15);
+    }
+    &__buttonShearch{
+      min-width: rem(25);
+    }
   }
 }
 </style>

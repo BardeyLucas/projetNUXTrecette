@@ -38,7 +38,7 @@
       <div class="footer__section_newsletter">
         <h3>Juin Our Newsletter</h3>
         <div class="footer__newsletter-input">
-          <input type="email" placeholder="email">
+          <input id="email" type="email" placeholder="email">
           <button>
             <AssetsSendMail />
           </button>
