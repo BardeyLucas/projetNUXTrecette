@@ -26,6 +26,7 @@ body {
   gap: rem(16);
   padding: rem(16);
   background-color: var(--grisFonce);
+  flex-wrap: wrap;
 }
 
 .inventaire {
@@ -53,7 +54,7 @@ body {
 
       &Left {
         display: flex;
-        gap: rem(32);
+        gap: 0 rem(32);
 
         & > a {
           color: rgb(255, 255, 255);
@@ -224,6 +225,71 @@ body {
   }
   &__profile--connected {
     background-image: url(/images/UserConnected.png);
+  }
+  @media (max-width: rem(1200)) {
+    &__bottom {
+      padding: rem(20) rem(50);
+    }
+
+    &__bottomLeft {
+      gap: rem(60);
+    }
+
+    &__shearch-categories>p{
+      font-size: rem(14);
+    }
+    &__inputSearch{
+      font-size: rem(14);
+    }
+  }
+  @media (max-width: rem(950)) {
+    &__top{
+      flex-direction: column-reverse;
+      gap: rem(10);
+    }
+    &__topLeft{
+      justify-content: center;
+    }
+    &__topRight{
+      justify-content: right;
+    }
+    &__bottom{
+      padding: rem(20) rem(20);
+      gap: rem(30);
+    }
+    &__bottomLeft{
+      gap: rem(30);
+    }
+    &__sectionlogo{
+      min-width: rem(120);
+      height: rem(58);
+    }
+    &__logo{
+      width: rem(120);
+      height: rem(58);
+    }
+  }
+  @media (max-width: rem(950)) {
+    &__top{
+      padding: rem(12) rem(20);
+    }
+    &__topLeft{
+      flex-wrap: wrap;
+    }
+    &__bottomLeft{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+      height: auto;
+    }
+    &__search{
+      width: calc(100vw - rem(40));
+      margin-right: -100vw;
+      z-index: 2;
+    }
+    &__bottomRight{
+      align-items: flex-start;
+    }
   }
 }
 
