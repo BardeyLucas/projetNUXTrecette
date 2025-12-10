@@ -334,8 +334,15 @@ body {
 
     &__sectionRight {
       flex-wrap: wrap;
-      gap: rem(50);
+      gap: rem(40);
       justify-content: center;
+      text-align: center;
+
+      & > div {
+        & > h3 {
+          margin-bottom: 5px;
+        }
+      }
     }
   }
   @media (max-width: rem(1160)) {
