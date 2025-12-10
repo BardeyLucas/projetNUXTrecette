@@ -232,24 +232,38 @@ body {
   background-color: black;
   display: flex;
   color: white;
+  padding: rem(25) rem(100);
+  justify-content: space-between;
+  gap: rem(150);
 
   &__section_logo {
-    
+    margin-top: rem(35);
+    width: fit-content;
   }
 
   &__logo {
-  
+    width: rem(150);
+    height: rem(72);
   }
 
   &__rights {
-  
+    font-size: rem(20);
+    white-space: pre;
   }
 
-  &__section_FreshRecipe, &r__section_news, &__section_AboutUs, &__section_newsletter {
+  &__sectionRight {
+    display: flex;
+    margin-top: rem(25);
+    gap: rem(30);
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__section_FreshRecipe, &__section_news, &__section_AboutUs, &__section_newsletter {
     
 
     & > h3 {
-    
+     font-size: rem(20);
     }
 
     & > ul {
@@ -262,21 +276,37 @@ body {
   }
 
   &__section_newsletter {
-    
+    margin-left: rem(70);
 
     & > h3 {
-    
+      font-family: montez;
+      font-size: rem(40);
+      font-weight: normal;
+    }
+  }
+
+  &__newsletter-input {
+    display: flex;
+    border: solid rem(1) white;
+    justify-content: space-between;
+    padding: 0 rem(20);
+
+    & > input {
+      border: none;
+      background-color: #00000000;
+      color : white;
+      font-size: rem(20);
     }
 
-    &__newsletter-input {
-      display: flex;
+    & > button {
+      border: none;
+      background-color: #00000000;
+      color : white;
+      padding: 0;
 
-      & > input {
-
-      }
-
-      & > button {
-
+      & > svg {
+        width: rem(50);
+        height: rem(50);
       }
     }
   }
