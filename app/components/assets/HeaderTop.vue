@@ -2,48 +2,54 @@
 import type { SanitySiteSettings } from '~/types/cms/site-settings'
 const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
+
+const props = defineProps<{
+  user: Users | null
+}>()
 </script>
 <template>
   <nav class="header__top">
     <section class="header__topLeft">
       <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
     </section>
-    <section class="header__topRight">
-      <button>
+    <section 
+      class="header__topRight"
+      :style="{ display: props.user ? 'none' : 'flex'}">>
+      <NuxtLink to="/register" class="header__topRight_link">
         <AssetsLogin class="LoginIcon" />
         Register
-      </button>
-      <button>
+      </NuxtLink>
+      <NuxtLink to="/login" class="header__topRight_link">
         <AssetsUser class="UserIcon" />
         Login
-      </button>
+      </NuxtLink>
     </section>
   </nav>
 </template>
 <style lang="scss">
-    .header {
-      &__top {
+  .header {
+    &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: rem(12) rem(72);
+    font-family: Montserrat;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &Left {
       display: flex;
-      justify-content: space-between;
-      padding: rem(12) rem(72);
-      font-family: Montserrat;
-      text-transform: uppercase;
-      font-weight: 700;
+      gap: 0 rem(32);
 
-      &Left {
-        display: flex;
-        gap: 0 rem(32);
-
-        & > a {
-          color: rgb(255, 255, 255);
-          text-decoration: none;
-        }
+      & > a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
       }
+    }
     &Right {
       display: flex;
       gap: rem(20);
 
-      & > button {
+      &_link  {
         background-color: #00000000;
         border: none;
         color: white;
@@ -54,6 +60,7 @@ const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
         display: flex;
         align-items: center;
         gap: rem(8);
+        text-decoration: none;
       }
 
       .LoginIcon {
