@@ -141,47 +141,5 @@ watch(() => [filters.value, search.value], () => {
       margin-right: rem(100);
       margin-top: rem(50);
     }
-    &__card {
-      border-radius: rem(20);
-      box-shadow: 0 rem(5) rem(5) rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-
-      &_Link {
-        color: black;
-        text-decoration: none;
-        font-family: montserrat;
-      }
-
-      &_Image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-      }
-
-      &_Title {
-        padding: 0 rem(10);
-      }
-
-      &_Info {
-        display: flex;
-        justify-content: left;
-        padding: 0 rem(10);
-        padding-bottom: rem(10);
-        flex-wrap: wrap;
-        gap: rem(5);
-      }
-      &_CuisineName,
-      &_GoalName,
-      &_DietName,
-      &_AllergyName {
-        background-color: #84BD00;
-        color: white;
-        padding: rem(4) rem(8);
-        border-radius: rem(8);
-        font-size: rem(12);
-        font-weight: bold;
-      }
-    }
   }
 </style>

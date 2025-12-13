@@ -81,25 +81,5 @@ const recipes = computed(() => {
     gap: rem(20);
     justify-content: center;
   }
-  &__card {
-
-    &_Link {
-      color: black;
-      text-decoration: none;
-      font-family: montserrat;
-    }
-
-    &_Image {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-
-    &_Info {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
 }
 </style>

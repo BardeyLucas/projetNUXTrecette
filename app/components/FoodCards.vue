@@ -23,12 +23,56 @@ async function onDelete (recipeId: string | number) {
 }
 </script>
 <template>
-  <div class="homePage__card">
-    <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="homePage__card_Link">
-      <img :src="`/images/${recipe.image_url}`" class="homePage__card_Image" alt="Recipe Image">
-      <h2 class="homePage__card_Title">{{ recipe.title }}</h2>
-      <div class="homePage__card_Info"><p v-if="recipe.cuisine_name" class="homePage__card_CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="homePage__card_GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="homePage__card_DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="homePage__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
+  <div class="card">
+    <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="card__Link">
+      <img :src="`/images/${recipe.image_url}`" class="card__Image" alt="Recipe Image">
+      <h2 class="card__Title">{{ recipe.title }}</h2>
+      <div class="card__Info"><p v-if="recipe.cuisine_name" class="card__CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="card__GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="card__DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="card__AllergyName">{{ recipe?.allergy_name }}</p></div>
     </NuxtLink>
     <button v-if="parameters" class="dashboard__card_Button" @click="onDelete(recipe.recipe_id)">{{ recipe.recipe_id }}</button>
   </div>
 </template>
+<style lang="scss">
+    .card {
+      border-radius: rem(20);
+      box-shadow: 0 rem(5) rem(5) rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      &__Link {
+        color: black;
+        text-decoration: none;
+        font-family: montserrat;
+      }
+
+      &__Image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+
+      &__Title {
+        padding: 0 rem(10);
+      }
+
+      &__Info {
+        display: flex;
+        justify-content: left;
+        padding: 0 rem(10);
+        padding-bottom: rem(10);
+        flex-wrap: wrap;
+        gap: rem(5);
+      }
+      &__CuisineName,
+      &__GoalName,
+      &__DietName,
+      &__AllergyName {
+        background-color: #84BD00;
+        color: white;
+        padding: rem(4) rem(8);
+        border-radius: rem(8);
+        font-size: rem(12);
+        font-weight: bold;
+      }
+    }
+</style>
