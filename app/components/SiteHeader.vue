@@ -21,7 +21,7 @@ watch(token, (newToken) => {
 
 <template>
   <header class="header">
-    <assetsHeaderTop />
+    <assetsHeaderTop :user="user" />
     <assetsHeaderBottom :user="user" />
   </header>
 </template>

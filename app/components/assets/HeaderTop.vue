@@ -2,13 +2,19 @@
 import type { SanitySiteSettings } from '~/types/cms/site-settings'
 const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
+
+const props = defineProps<{
+  user: Users | null
+}>()
 </script>
 <template>
   <nav class="header__top">
     <section class="header__topLeft">
       <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
     </section>
-    <section class="header__topRight">
+    <section 
+      class="header__topRight"
+      :style="{ display: props.user ? 'none' : 'flex'}">>
       <button>
         <AssetsLogin class="LoginIcon" />
         Register
