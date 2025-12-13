@@ -157,6 +157,8 @@ watch(() => [filters.value, search.value], () => {
       &_Image {
         width: 100%;
         height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
       }
 
       &_Info {

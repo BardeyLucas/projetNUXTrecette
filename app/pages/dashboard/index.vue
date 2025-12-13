@@ -43,6 +43,21 @@ const recipes = computed(() => {
     (r.description ?? '').toLowerCase().includes(q)
   )
 })
+
+async function onDelete (recipeId: string | number) {
+  try {
+    await $fetch(`${config.public.apiUrl}/api/recipes/${recipeId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${useCookie('recipe-token').value}`
+      }
+    })
+    // Rafraîchir la liste après suppression
+    await refreshNuxtData('recipes')
+  } catch (error) {
+    console.error('Error deleting recipe:', error)
+  }
+}
 </script>
 
 <template>
@@ -62,7 +77,7 @@ const recipes = computed(() => {
             <div class="dashboard__card_Info"><p class="dashboard__card_CuisineName">{{ recipe?.cuisine_name }}</p><p class="dashboard__card_GoalName">{{ recipe?.goal_name }}</p></div>
             <div class="dashboard__card_Info dashboard__card_Info_Bottom"><p class="dashboard__card_DietName">{{ recipe?.diet_name }}</p><p class="dashboard__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
           </NuxtLink>
-          <button class="dashboard__card_Button">{{ recipe.recipe_id }}</button>
+          <button class="dashboard__card_Button" @click="onDelete(recipe.recipe_id)">{{ recipe.recipe_id }}</button>
         </div>
       </section>
     </div>
@@ -101,6 +116,8 @@ const recipes = computed(() => {
     &_Image {
       width: 100%;
       height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
     }
 
     &_Info {
