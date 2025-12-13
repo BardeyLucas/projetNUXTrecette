@@ -94,11 +94,11 @@ watch(() => [filters.value, search.value], () => {
         <FoodCards v-for="(recipe, index) in paginatedRecipes" :key="index" :recipe="recipe"/>
       </section>
       <div class="homePage__pagination">
-        <button class="homePage__pagination_button" v-if="page > 1" @click="page = Math.max(1, page - 1)">&lt;</button>
-        <button class="homePage__pagination_button--inactive" v-if="page <= 1"></button>
+        <button v-if="page > 1" class="homePage__pagination_button" @click="page = Math.max(1, page - 1)">&lt;</button>
+        <button v-if="page <= 1" class="homePage__pagination_button--inactive">&lt;</button>
         <p class="homePage__pagination_page">{{ page }} / {{ totalPages }}</p>
-        <button class="homePage__pagination_button" v-if="page < totalPages" @click="page = Math.min(totalPages, page + 1)">&gt;</button>
-        <button class="homePage__pagination_button--inactive" v-if="page >= totalPages"></button>
+        <button v-if="page < totalPages" class="homePage__pagination_button" @click="page = Math.min(totalPages, page + 1)">&gt;</button>
+        <button v-if="page >= totalPages" class="homePage__pagination_button--inactive">&gt;</button>
       </div>
     </section>
   </div>
