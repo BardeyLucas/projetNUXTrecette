@@ -5,8 +5,6 @@ const props = defineProps<{
   user: Users | null
 }>()
 
-console.log('HeaderBottom user prop:', props.user)
-
 const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
 const { urlFor } = useSanityImage()

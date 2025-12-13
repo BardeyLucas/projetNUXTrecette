@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>Button menu</h1>
-    <section class="inventaire">
+  <div class="inventaire">
+    <h1 class="inventaire__title">Button menu</h1>
+    <section class="inventaire__section">
       <MyButton size="giant">Button</MyButton>
       <MyButton size="large">Button</MyButton>
       <MyButton size="medium">Button</MyButton>
@@ -65,3 +65,14 @@
     </section>
   </div>
 </template>
+<style scoped lang="scss">
+.inventaire{
+  margin: rem(50);
+
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(16);
+  }
+}
+</style>
