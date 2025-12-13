@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { jwtDecode } from 'jwt-decode'
+import User from '~/components/assets/User.vue'
+
 definePageMeta({
   middleware: ['auth']
 })
@@ -12,13 +15,33 @@ function onLogoutClick () {
 const config = useRuntimeConfig()
 
 await useAsyncData('my-recipes', () => {
-  const cookie = useCookie('recipe-token')
   return $fetch(`${config.public.apiUrl}/api/recipes/my-recipes`, {
     headers: {
       Authorization: `Bearer ${cookie.value}`
     }
   })
 })
+
+const cookie = useCookie<string | null>('recipe-token')
+interface JwtPayload {
+  user_id: string
+  // ajoute d'autres propriétés si besoin
+}
+
+const decoded = ref<JwtPayload | null>(null)
+
+watch(cookie, (newToken) => {
+  if (!newToken) {
+    decoded.value = null
+    return
+  }
+
+  try {
+    decoded.value = jwtDecode(newToken)
+  } catch {
+    decoded.value = null
+  }
+}, { immediate: true })
 
 const [{ data: allRecipes, error: recipeError }] =
   await Promise.all([
@@ -29,6 +52,7 @@ const [{ data: allRecipes, error: recipeError }] =
       return data
     })
   ])
+
 
 // champ de recherche (disponible pour le template via v-model="search")
 const user = ref('')
@@ -43,6 +67,20 @@ const recipes = computed(() => {
     (r.description ?? '').toLowerCase().includes(q)
   )
 })
+
+const filters = decoded.value?.user_id ? [decoded.value.user_id] : []
+
+const filteredRecipes = computed(() => {
+  if (!recipes.value) return []
+  let results = recipes.value
+  if (filters && filters.length) {
+    const numericFilters = filters.map(f => Number(f))
+    results = results.filter(recipe => numericFilters.includes(recipe.user_id))
+  }
+  return results
+})
+
+console.log('Filtered Recipes:', filteredRecipes.value)
 </script>
 
 <template>
@@ -55,7 +93,7 @@ const recipes = computed(() => {
     <div class="dashboard__recipes">
       <h2 class="dashboard__recipes_Title">Recipes:</h2>
       <section class="dashboard__grille_recipes">
-        <FoodCards v-for="recipe in recipes" :key="recipe.recipe_id" :recipe="recipe" :parameters="true"/>
+        <FoodCards v-for="recipe in filteredRecipes" :key="recipe.recipe_id" :recipe="recipe" :parameters="true"/>
       </section>
     </div>
   </div>
