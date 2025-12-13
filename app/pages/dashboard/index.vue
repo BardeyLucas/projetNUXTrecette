@@ -128,6 +128,7 @@ console.log('Filtered Recipes:', filteredRecipes.value)
     padding: rem(8) rem(16);
     font-size: rem(14);
     cursor: pointer;
+    text-decoration: none;
   }
 
   &__logoutButton{
