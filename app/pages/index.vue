@@ -93,8 +93,13 @@ watch(() => [filters.value, search.value], () => {
       <section class="homePage__grille_recipes">
         <FoodCards v-for="(recipe, index) in paginatedRecipes" :key="index" :recipe="recipe"/>
       </section>
-      <p>Page {{ page }} / {{ totalPages }}</p>
-      <input v-model="page" type="number" min="1" :max="totalPages" >
+      <div class="homePage__pagination">
+        <button class="homePage__pagination_button" v-if="page > 1" @click="page = Math.max(1, page - 1)">&lt;</button>
+        <button class="homePage__pagination_button--inactive" v-if="page <= 1"></button>
+        <p class="homePage__pagination_page">{{ page }} / {{ totalPages }}</p>
+        <button class="homePage__pagination_button" v-if="page < totalPages" @click="page = Math.min(totalPages, page + 1)">&gt;</button>
+        <button class="homePage__pagination_button--inactive" v-if="page >= totalPages"></button>
+      </div>
     </section>
   </div>
 </template>
@@ -146,6 +151,42 @@ watch(() => [filters.value, search.value], () => {
       margin-right: rem(100);
       margin-top: rem(50);
     }
+
+    &__pagination{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: rem(10);
+      margin-bottom: rem(50);
+      margin: rem(20) 0;
+      margin-right: rem(100);
+
+      &_button{
+        background-color: #84BD00;
+        color: white;
+        border: none;
+        border-radius: rem(16);
+        width: rem(32);
+        height: rem(32);
+        font-size: rem(14);
+        cursor: pointer;
+
+        &--inactive{
+          visibility: hidden;
+          width: rem(32);
+          height: rem(32);
+        }
+      }
+      &_page{
+        font-family: Montserrat;
+        font-size: rem(16);
+        font-weight: bold;
+        background-color: #84BD00;
+        color: white;
+        border-radius: rem(16);
+        padding: rem(2) rem(8);
+      }
+    }
     @media (max-width: rem(1375)) {
       &__grille_recipes{
         grid-template-columns: repeat(2, 1fr);
@@ -160,6 +201,10 @@ watch(() => [filters.value, search.value], () => {
         }
       }
       &__grille_recipes{
+        margin-right: rem(50);
+      }
+
+      &__pagination{
         margin-right: rem(50);
       }
     }
@@ -183,6 +228,9 @@ watch(() => [filters.value, search.value], () => {
       &__grille_recipes{
         margin-right: rem(20);
       }
+      &__pagination{
+        margin-right: rem(20);
+      }
     }
     @media (max-width: rem(450)) {
       &__aside{
@@ -196,6 +244,10 @@ watch(() => [filters.value, search.value], () => {
         &_filter {
           font-size: rem(12);
         }
+      }
+      &__pagination_page{
+        font-size: rem(12);
+        padding: rem(4) rem(8);
       }
     }
   }
