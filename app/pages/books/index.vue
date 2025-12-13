@@ -10,15 +10,38 @@ const { data: books } = await useLazySanityQuery<SanityDocument[]>(BOOKS_QUERY)
 </script>
 
 <template>
-  <main class="container mx-auto min-h-screen max-w-3xl p-8">
-    <h1 class="text-4xl font-bold mb-8">Books</h1>
-    <ul class="flex flex-col gap-y-4">
-      <li v-for="book in books" :key="book._id" class="hover:underline">
-        <nuxt-link :to="`/books/${book.slug.current}`">
-          <h2 class="text-xl font-semibold">{{ book.title }}</h2>
-          <p>{{ new Date(book.publishedAt).toLocaleDateString() }}</p>
+  <div class="booksPage">
+    <h1 class="booksPage__title">Books</h1>
+    <ul class="booksPage__list">
+      <li v-for="book in books" :key="book._id" class="booksPage__item">
+        <nuxt-link :to="`/books/${book.slug.current}`" class="booksPage__link">
+          <h2 class="booksPage__bookTitle">{{ book.title }}</h2>
+          <p class="booksPage__publishedAt">{{ new Date(book.publishedAt).toLocaleDateString() }}</p>
         </nuxt-link>
       </li>
     </ul>
-  </main>
+  </div>
 </template>
+<style lang="scss">
+  .booksPage {
+    padding: rem(50);
+
+    &__list {
+      padding: 0 rem(20);
+    }
+
+    &__link {
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @media (max-width: rem(500)) {
+      &__bookTitle {
+        font-size: rem(20);
+      }
+
+      &__publishedAt {
+        font-size: rem(14);
+      }
+    }
+  }
+</style>
