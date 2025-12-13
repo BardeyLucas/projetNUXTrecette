@@ -60,8 +60,9 @@ async function confirmDelete (recipeId: string | number) {
 
 </script>
 <template>
-  <div class="card"
-       :class="{ 'card--confirm': isConfirming === String(recipe.recipe_id) }" >
+  <div 
+    class="card"
+    :class="{ 'card--confirm': isConfirming === String(recipe.recipe_id) }" >
     <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="card__Link">
       <img :src="`/images/${recipe.image_url}`" class="card__Image" alt="Recipe Image">
       <h2 class="card__Title">{{ recipe.title }}</h2>

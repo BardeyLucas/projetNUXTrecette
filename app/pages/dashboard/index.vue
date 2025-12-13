@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { jwtDecode } from 'jwt-decode'
-import User from '~/components/assets/User.vue'
 
 definePageMeta({
   middleware: ['auth']
@@ -86,7 +85,10 @@ console.log('Filtered Recipes:', filteredRecipes.value)
 <template>
   <div class="dashboard">
     <h1 class="dashboard__title">Dashboard</h1>
-    <button class="dashboard__logoutButton" @click="onLogoutClick">Logout</button>
+    <div class="dashboard__ButtonContainer">
+      <NuxtLink class="dashboard__addRecipeButton" to="/recipe/createRecipe">Ajouter une recette</NuxtLink>
+      <button class="dashboard__logoutButton" @click="onLogoutClick">Ce déconnecter</button>
+    </div>
     <div v-if="recipeError" class="dashboard__error">
       <p class="dashboard__error_Text">Error loading recipes: {{ recipeError.message }}</p>
     </div>
@@ -112,6 +114,31 @@ console.log('Filtered Recipes:', filteredRecipes.value)
   align-items: center;
   flex-direction: column;
   padding: 2rem;
+
+  &__ButtonContainer{
+    display: flex;
+    gap: rem(16);
+  }
+
+  &__addRecipeButton{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: rem(8);
+    padding: rem(8) rem(16);
+    font-size: rem(14);
+    cursor: pointer;
+  }
+
+  &__logoutButton{
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: rem(8);
+    padding: rem(8) rem(16);
+    font-size: rem(14);
+    cursor: pointer;
+  }
 
   &__grille_recipes{
     display: grid;
