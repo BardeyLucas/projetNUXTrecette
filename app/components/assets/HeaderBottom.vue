@@ -2,11 +2,10 @@
 import type { SanitySiteSettings } from '~/types/cms/site-settings'
 
 const props = defineProps<{
-  user: any | null
+  user: Users | null
 }>()
-const { user } = props
 
-console.log('HeaderBottom user prop:', user)
+console.log('HeaderBottom user prop:', props.user)
 
 const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)

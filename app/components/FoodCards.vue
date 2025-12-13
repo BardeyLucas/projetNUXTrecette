@@ -68,7 +68,7 @@ async function confirmDelete (recipeId: string | number) {
       <h2 class="card__Title">{{ recipe.title }}</h2>
       <div class="card__Info"><p v-if="recipe.cuisine_name" class="card__CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="card__GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="card__DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="card__AllergyName">{{ recipe?.allergy_name }}</p></div>
     </NuxtLink>
-    <div class="card__ButtonContainer" ref="confirmRef">
+    <div ref="confirmRef" class="card__ButtonContainer">
       <button 
         v-if="parameters && isConfirming !== String(recipe.recipe_id)" 
         class="card__Button" 
