@@ -23,7 +23,7 @@ const isConnected = computed(() => !!token.value)
 <template>
   <header class="header">
     <assetsHeaderTop />
-    <assetsHeaderBottom :isConnected="isConnected" />
+    <assetsHeaderBottom :is-connected="isConnected" />
   </header>
 </template>
 <style lang="scss">
