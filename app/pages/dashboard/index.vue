@@ -81,5 +81,15 @@ const recipes = computed(() => {
     gap: rem(20);
     justify-content: center;
   }
+  @media (max-width: rem(700)) {
+    &__grille_recipes{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: rem(500)) {
+    &__grille_recipes{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
 </style>

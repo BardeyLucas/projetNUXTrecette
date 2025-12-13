@@ -74,5 +74,23 @@ async function onDelete (recipeId: string | number) {
         font-size: rem(12);
         font-weight: bold;
       }
+      @media (max-width: rem(750)) and (min-width: rem(700)) {
+        &__Title {
+          font-size: rem(20);
+        }
+        &__CuisineName,
+        &__GoalName,
+        &__DietName,
+        &__AllergyName {
+            padding: rem(4) rem(6);
+            border-radius: rem(6);
+            font-size: rem(10);
+        }
+      }
+      @media (max-width: rem(450)) {
+        &__Title {
+          font-size: rem(16) !important;
+        }
+      }
     }
 </style>

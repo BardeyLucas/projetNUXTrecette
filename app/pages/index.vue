@@ -77,8 +77,14 @@ watch(() => [filters.value, search.value], () => {
       <h2 class="homePage__aside_title">Filtre par Cuisine</h2>
       <div class="homePage__aside_filter">
         <div v-for="cuisine in cuisines" :key="cuisine.cuisine_id" class="homePage__aside_filter_item">
-          <input :id="`cuisine-${cuisine.cuisine_id}`" class="homePage__aside_filter_item_input" type="checkbox" :value="cuisine.name" @input="onCheckboxInput">
-          <label class="homePage__aside_filter_item_label" :for="`cuisine-${cuisine.cuisine_id}`">{{ cuisine.name }}</label>
+          <input 
+            v-if="cuisine.name != 'Méditerranéenne'" 
+            :id="`cuisine-${cuisine.cuisine_id}`" 
+            class="homePage__aside_filter_item_input" 
+            type="checkbox" 
+            :value="cuisine.name" 
+            @input="onCheckboxInput">
+          <label v-if="cuisine.name != 'Méditerranéenne'"  class="homePage__aside_filter_item_label" :for="`cuisine-${cuisine.cuisine_id}`">{{ cuisine.name }}</label>
         </div>
       </div>
     </aside>
@@ -89,7 +95,6 @@ watch(() => [filters.value, search.value], () => {
       </section>
       <p>Page {{ page }} / {{ totalPages }}</p>
       <input v-model="page" type="number" min="1" :max="totalPages" >
-      <p>Data des recettes {{ recipes }} {{ recipeError }}</p>
     </section>
   </div>
 </template>
@@ -140,6 +145,58 @@ watch(() => [filters.value, search.value], () => {
       justify-content: center;
       margin-right: rem(100);
       margin-top: rem(50);
+    }
+    @media (max-width: rem(1375)) {
+      &__grille_recipes{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: rem(950)) {
+      &__aside{
+        margin: rem(32) rem(50);
+
+        &_title{
+          font-size: rem(32);
+        }
+      }
+      &__grille_recipes{
+        margin-right: rem(50);
+      }
+    }
+    @media (max-width: rem(700)) {
+      &__grille_recipes{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    @media (max-width: rem(550)) {
+      &__aside{
+        margin: rem(32) rem(20);
+
+        &_title{
+          font-size: rem(24);
+        }
+
+        &_search{
+          width: rem(100);
+        }
+      }
+      &__grille_recipes{
+        margin-right: rem(20);
+      }
+    }
+    @media (max-width: rem(450)) {
+      &__aside{
+        &_title{
+          font-size: rem(20);
+        }
+        &_search{
+          width: rem(80);
+          font-size: rem(12);
+        }
+        &_filter {
+          font-size: rem(12);
+        }
+      }
     }
   }
 </style>
