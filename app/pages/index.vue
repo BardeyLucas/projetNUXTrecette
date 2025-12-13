@@ -89,8 +89,7 @@ watch(() => [filters.value, search.value], () => {
           <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="homePage__card_Link">
             <img :src="`/images/${recipe.image_url}`" class="homePage__card_Image" alt="Recipe Image">
             <h2 class="homePage__card_Title">{{ recipe.title }}</h2>
-            <div class="homePage__card_Info"><p class="homePage__card_CuisineName">{{ recipe?.cuisine_name }}</p><p class="homePage__card_GoalName">{{ recipe?.goal_name }}</p></div>
-            <div class="homePage__card_Info homePage__card_Info_Bottom"><p class="homePage__card_DietName">{{ recipe?.diet_name }}</p><p class="homePage__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
+            <div class="homePage__card_Info"><p v-if="recipe.cuisine_name" class="homePage__card_CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="homePage__card_GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="homePage__card_DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="homePage__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
           </NuxtLink>
         </div>
       </section>
@@ -145,8 +144,13 @@ watch(() => [filters.value, search.value], () => {
       grid-template-columns: repeat(3, 1fr);
       gap: rem(20);
       justify-content: center;
+      margin-right: rem(100);
+      margin-top: rem(50);
     }
     &__card {
+      border-radius: rem(20);
+      box-shadow: 0 rem(5) rem(5) rgba(0, 0, 0, 0.1);
+      overflow: hidden;
 
       &_Link {
         color: black;
@@ -161,9 +165,28 @@ watch(() => [filters.value, search.value], () => {
         object-fit: cover;
       }
 
+      &_Title {
+        padding: 0 rem(10);
+      }
+
       &_Info {
         display: flex;
-        justify-content: space-between;
+        justify-content: left;
+        padding: 0 rem(10);
+        padding-bottom: rem(10);
+        flex-wrap: wrap;
+        gap: rem(5);
+      }
+      &_CuisineName,
+      &_GoalName,
+      &_DietName,
+      &_AllergyName {
+        background-color: #84BD00;
+        color: white;
+        padding: rem(4) rem(8);
+        border-radius: rem(8);
+        font-size: rem(12);
+        font-weight: bold;
       }
     }
   }
