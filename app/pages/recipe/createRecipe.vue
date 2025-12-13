@@ -63,7 +63,7 @@ const payload = ref({
 const config = useRuntimeConfig()
 
 async function onSubmit () {
-  if (!payload.value.title || !payload.value.description || !payload.value.cuisine_id || !payload.value.goal_id || !payload.value.DietaryInformation_id || !payload.value.AllergiesInformation_id) return
+  if (!payload.value.title || !payload.value.description || !payload.value.cuisine_id) return
     
   try {
     await fetch(`${config.public.apiUrl}/API/recipes`, {
