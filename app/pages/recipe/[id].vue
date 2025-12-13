@@ -38,7 +38,7 @@ if (!recipe.value || error.value) {
 
     &__image {
       width: 100%;
-      height: 500px;
+      height: 300px;
       object-fit: cover;
       margin-bottom: rem(20);
     }
@@ -72,6 +72,28 @@ if (!recipe.value || error.value) {
 
       &_instruction {
         margin-bottom: rem(8);
+      }
+    }
+    @media (max-width: rem(550)) {
+      &__content {
+        padding: rem(20);
+        font-size: rem(12);
+
+        &_title {
+          font-size: rem(24);
+        }
+
+        &_tags {
+          gap: rem(8);
+        }
+
+        &_tag {
+          font-size: rem(10);
+        }
+
+        &_subtitle {
+          font-size: rem(18);
+        }
       }
     }
   }

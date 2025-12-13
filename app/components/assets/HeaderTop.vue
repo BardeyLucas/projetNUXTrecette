@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <nav class="header__top">
     <section class="header__topLeft">
-      <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url">{{ item.label }}</RouterLink>
+      <RouterLink v-for="item in data?.navigation" :key="item._id" :to="item.url" class="header__topLeft_link">{{ item.label }}</RouterLink>
     </section>
     <section 
       class="header__topRight"
@@ -86,6 +86,11 @@ const props = defineProps<{
     }
     &__topRight{
       justify-content: right;
+    }
+  }
+  @media (max-width: rem(400)) {
+    &__topLeft_link{
+      font-size: rem(12);
     }
   }
 }
