@@ -48,7 +48,7 @@ const filteredRecipes = computed(() => {
 })
 
 const page = ref(1)
-const recipesPerPage = 2
+const recipesPerPage = 12
 const totalPages = computed(() => {
   const len = filteredRecipes.value?.length ?? 0
   return Math.max(1, Math.ceil(len / recipesPerPage))
@@ -84,13 +84,16 @@ watch(() => [filters.value, search.value], () => {
     </aside>
     <section>
       <p>{{ search }}</p>
-      <div v-for="(recipe, index) in paginatedRecipes" :key="index" class="card--test">
-        <NuxtLink :to="`/recipe/${recipe.recipe_id}`">
-          <img :src="`/images/${recipe.image_url}`" alt="Recipe Image">
-          <h2>{{ recipe.title }}</h2>
-          <div class="test__info"><p>{{ recipe?.cuisine_name }}</p><p>{{ recipe?.goal_name }}</p></div><div><p>{{ recipe?.diet_name }}</p><p>{{ recipe?.allergy_name }}</p></div>
-        </NuxtLink>
-      </div>
+      <section class="homePage__grille_recipes">
+        <div v-for="(recipe, index) in paginatedRecipes" :key="index" class="homePage__card">
+          <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="homePage__card_Link">
+            <img :src="`/images/${recipe.image_url}`" class="homePage__card_Image" alt="Recipe Image">
+            <h2 class="homePage__card_Title">{{ recipe.title }}</h2>
+            <div class="homePage__card_Info"><p class="homePage__card_CuisineName">{{ recipe?.cuisine_name }}</p><p class="homePage__card_GoalName">{{ recipe?.goal_name }}</p></div>
+            <div class="homePage__card_Info homePage__card_Info_Bottom"><p class="homePage__card_DietName">{{ recipe?.diet_name }}</p><p class="homePage__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
+          </NuxtLink>
+        </div>
+      </section>
       <p>Page {{ page }} / {{ totalPages }}</p>
       <input v-model="page" type="number" min="1" :max="totalPages" >
       <p>Data des recettes {{ recipes }} {{ recipeError }}</p>
@@ -135,6 +138,30 @@ watch(() => [filters.value, search.value], () => {
           color: #84BD00;
           font-weight: bolder;
         }
+      }
+    }
+    &__grille_recipes{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(20);
+      justify-content: center;
+    }
+    &__card {
+
+      &_Link {
+        color: black;
+        text-decoration: none;
+        font-family: montserrat;
+      }
+
+      &_Image {
+        width: 100%;
+        height: auto;
+      }
+
+      &_Info {
+        display: flex;
+        justify-content: space-between;
       }
     }
   }

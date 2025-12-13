@@ -46,35 +46,67 @@ const recipes = computed(() => {
 </script>
 
 <template>
-  <div class="p-dashboard">
-    <h1>Dashboard</h1>
-    <button @click="onLogoutClick">Logout</button>
-    <div v-if="recipeError">
-      <p class="text">Error loading recipes: {{ recipeError.message }}</p>
+  <div class="dashboard">
+    <h1 class="dashboard__title">Dashboard</h1>
+    <button class="dashboard__logoutButton" @click="onLogoutClick">Logout</button>
+    <div class="dashboard__error" v-if="recipeError">
+      <p class="dashboard__error_Text">Error loading recipes: {{ recipeError.message }}</p>
     </div>
-    <div v-else>
-      <h2 class="text">Recipes:</h2>
-      <p v-for="recipe in recipes" :key="recipe.recipe_id">
-        <span v-if="recipe.user_id">
-          {{ recipe }}
-        </span>
-      </p>
+    <div class="dashboard__recipes" v-else>
+      <h2 class="dashboard__recipes_Title">Recipes:</h2>
+      <section class="dashboard__grille_recipes">
+        <div v-for="recipe in recipes" :key="recipe.recipe_id" class="dashboard__card">
+          <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="dashboard__card_Link">
+            <img :src="`/images/${recipe.image_url}`" class="dashboard__card_Image" alt="Recipe Image">
+            <h2 class="dashboard__card_Title">{{ recipe.title }}</h2>
+            <div class="dashboard__card_Info"><p class="dashboard__card_CuisineName">{{ recipe?.cuisine_name }}</p><p class="dashboard__card_GoalName">{{ recipe?.goal_name }}</p></div>
+            <div class="dashboard__card_Info dashboard__card_Info_Bottom"><p class="dashboard__card_DietName">{{ recipe?.diet_name }}</p><p class="dashboard__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
+          </NuxtLink>
+          <button class="dashboard__card_Button">{{ recipe.recipe_id }}</button>
+        </div>
+      </section>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-div {
+
+
+.text {
+  color: black;
+}
+
+.dashboard{
   background-color: white;
   min-height: 100vh; // s'assure que le fond couvre toute la hauteur de la page
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-}
 
-.text {
-  color: black;
-}
+  &__grille_recipes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(20);
+    justify-content: center;
+  }
+  &__card {
 
+    &_Link {
+      color: black;
+      text-decoration: none;
+      font-family: montserrat;
+    }
+
+    &_Image {
+      width: 100%;
+      height: auto;
+    }
+
+    &_Info {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
 </style>
