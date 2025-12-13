@@ -43,47 +43,23 @@ const recipes = computed(() => {
     (r.description ?? '').toLowerCase().includes(q)
   )
 })
-
-async function onDelete (recipeId: string | number) {
-  try {
-    await $fetch(`${config.public.apiUrl}/api/recipes/${recipeId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${useCookie('recipe-token').value}`
-      }
-    })
-    // Rafraîchir la liste après suppression
-    await refreshNuxtData('recipes')
-  } catch (error) {
-    console.error('Error deleting recipe:', error)
-  }
-}
 </script>
 
 <template>
   <div class="dashboard">
     <h1 class="dashboard__title">Dashboard</h1>
     <button class="dashboard__logoutButton" @click="onLogoutClick">Logout</button>
-    <div class="dashboard__error" v-if="recipeError">
+    <div v-if="recipeError" class="dashboard__error">
       <p class="dashboard__error_Text">Error loading recipes: {{ recipeError.message }}</p>
     </div>
-    <div class="dashboard__recipes" v-else>
+    <div class="dashboard__recipes">
       <h2 class="dashboard__recipes_Title">Recipes:</h2>
       <section class="dashboard__grille_recipes">
-        <div v-for="recipe in recipes" :key="recipe.recipe_id" class="dashboard__card">
-          <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="dashboard__card_Link">
-            <img :src="`/images/${recipe.image_url}`" class="dashboard__card_Image" alt="Recipe Image">
-            <h2 class="dashboard__card_Title">{{ recipe.title }}</h2>
-            <div class="dashboard__card_Info"><p class="dashboard__card_CuisineName">{{ recipe?.cuisine_name }}</p><p class="dashboard__card_GoalName">{{ recipe?.goal_name }}</p></div>
-            <div class="dashboard__card_Info dashboard__card_Info_Bottom"><p class="dashboard__card_DietName">{{ recipe?.diet_name }}</p><p class="dashboard__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
-          </NuxtLink>
-          <button class="dashboard__card_Button" @click="onDelete(recipe.recipe_id)">{{ recipe.recipe_id }}</button>
-        </div>
+        <FoodCards v-for="recipe in recipes" :key="recipe.recipe_id" :recipe="recipe" :parameters="true"/>
       </section>
     </div>
   </div>
 </template>
-
 <style scoped lang="scss">
 
 

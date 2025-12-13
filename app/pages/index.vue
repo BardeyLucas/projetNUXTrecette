@@ -76,8 +76,8 @@ watch(() => [filters.value, search.value], () => {
       <input v-model="search" type="text" placeholder="Search..." class="homePage__aside_search" >
       <h2 class="homePage__aside_title">Filtre par Cuisine</h2>
       <div class="homePage__aside_filter">
-        <div class="homePage__aside_filter_item" v-for="cuisine in cuisines" :key="cuisine.cuisine_id">
-          <input class="homePage__aside_filter_item_input" :id="`cuisine-${cuisine.cuisine_id}`" type="checkbox" :value="cuisine.name" @input="onCheckboxInput">
+        <div v-for="cuisine in cuisines" :key="cuisine.cuisine_id" class="homePage__aside_filter_item">
+          <input :id="`cuisine-${cuisine.cuisine_id}`" class="homePage__aside_filter_item_input" type="checkbox" :value="cuisine.name" @input="onCheckboxInput">
           <label class="homePage__aside_filter_item_label" :for="`cuisine-${cuisine.cuisine_id}`">{{ cuisine.name }}</label>
         </div>
       </div>
@@ -85,13 +85,7 @@ watch(() => [filters.value, search.value], () => {
     <section>
       <p>{{ search }}</p>
       <section class="homePage__grille_recipes">
-        <div v-for="(recipe, index) in paginatedRecipes" :key="index" class="homePage__card">
-          <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="homePage__card_Link">
-            <img :src="`/images/${recipe.image_url}`" class="homePage__card_Image" alt="Recipe Image">
-            <h2 class="homePage__card_Title">{{ recipe.title }}</h2>
-            <div class="homePage__card_Info"><p v-if="recipe.cuisine_name" class="homePage__card_CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="homePage__card_GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="homePage__card_DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="homePage__card_AllergyName">{{ recipe?.allergy_name }}</p></div>
-          </NuxtLink>
-        </div>
+        <FoodCards v-for="(recipe, index) in paginatedRecipes" :key="index" :recipe="recipe"/>
       </section>
       <p>Page {{ page }} / {{ totalPages }}</p>
       <input v-model="page" type="number" min="1" :max="totalPages" >
