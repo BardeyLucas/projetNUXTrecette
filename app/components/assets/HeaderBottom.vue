@@ -2,10 +2,10 @@
 import type { SanitySiteSettings } from '~/types/cms/site-settings'
 
 const props = defineProps<{
-  isConnected: boolean;
+  user: Users | null
 }>()
 
-const { isConnected } = props
+console.log('HeaderBottom user prop:', props.user)
 
 const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
@@ -39,7 +39,9 @@ const { urlFor } = useSanityImage()
         </div>
       </button>
       <RouterLink to="/dashboard">
-        <button class="header__profile" :class="{ 'header__profile--connected': isConnected == true }">
+        <button 
+          class="header__profile"  
+          :style="{ backgroundImage: props.user ? 'url(/images/UserConnected.png)' : 'url(/images/UserNotConnected.png)'}">
           <!-- Profile Button -->
         </button>
       </RouterLink>
@@ -177,13 +179,9 @@ const { urlFor } = useSanityImage()
     height: rem(56);
     border: none;
     border-radius: rem(1000);
-    background-image: url(/images/UserNotConnected.png);
     background-size: cover;
     background-position: center;
     border: rem(2) solid #858585;
-  }
-  &__profile--connected {
-    background-image: url(/images/UserConnected.png);
   }
   @media (max-width: rem(1200)) {
       &__bottom {

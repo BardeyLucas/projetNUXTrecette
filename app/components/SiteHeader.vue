@@ -17,13 +17,12 @@ watch(token, (newToken) => {
     user.value = null
   }
 }, { immediate: true })
-const isConnected = computed(() => !!token.value)
 </script>
 
 <template>
   <header class="header">
     <assetsHeaderTop />
-    <assetsHeaderBottom :is-connected="isConnected" />
+    <assetsHeaderBottom :user="user" />
   </header>
 </template>
 <style lang="scss">
