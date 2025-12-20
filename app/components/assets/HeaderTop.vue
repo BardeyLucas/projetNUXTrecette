@@ -14,7 +14,7 @@ const props = defineProps<{
     </section>
     <section 
       class="header__topRight"
-      :style="{ display: props.user ? 'none' : 'flex'}">>
+      :style="{ display: props.user ? 'none' : 'flex'}">
       <NuxtLink to="/register" class="header__topRight_link">
         <AssetsLogin class="LoginIcon" />
         Register
@@ -41,7 +41,7 @@ const props = defineProps<{
       gap: 0 rem(32);
 
       & > a {
-        color: rgb(255, 255, 255);
+        color: var(--white);
         text-decoration: none;
       }
     }
@@ -50,9 +50,9 @@ const props = defineProps<{
       gap: rem(20);
 
       &_link  {
-        background-color: #00000000;
+        background-color: var(--transparent);
         border: none;
-        color: white;
+        color: var(--white);
         font-family: Montserrat;
         font-size: rem(15);
         text-transform: uppercase;

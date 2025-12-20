@@ -28,7 +28,7 @@ watch(token, (newToken) => {
 <style lang="scss">
   .header {
   width: 100%;
-  background-color: black;
+  background-color: var(--darkgray);
   box-shadow: 0 rem(4) rem(8) #0000000d;
   position: sticky;
   top: 0;

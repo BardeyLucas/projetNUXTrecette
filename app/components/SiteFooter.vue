@@ -49,7 +49,7 @@
 </template>
 <style lang="scss">
   .footer{
-  background-color: black;
+  background-color: var(--darkgray);
   display: flex;
   color: white;
   padding: rem(25) rem(100);
