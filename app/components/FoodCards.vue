@@ -63,11 +63,11 @@ async function confirmDelete (recipeId: string | number) {
   <div 
     class="card"
     :class="{ 'card--confirm': isConfirming === String(recipe.recipe_id) }" >
-    <NuxtLink :to="`/recipe/${recipe.recipe_id}`" class="card__Link">
+    <a :href="`/recipe/${recipe.recipe_id}`" class="card__Link">
       <img :src="`/images/${recipe.image_url}`" class="card__Image" alt="Recipe Image">
       <h2 class="card__Title">{{ recipe.title }}</h2>
       <div class="card__Info"><p v-if="recipe.cuisine_name" class="card__CuisineName">{{ recipe?.cuisine_name }}</p><p v-if="recipe.goal_name" class="card__GoalName">{{ recipe?.goal_name }}</p><p v-if="recipe.diet_name" class="card__DietName">{{ recipe?.diet_name }}</p><p v-if="recipe.allergy_name" class="card__AllergyName">{{ recipe?.allergy_name }}</p></div>
-    </NuxtLink>
+    </a>
     <div ref="confirmRef" class="card__ButtonContainer">
       <button 
         v-if="parameters && isConfirming !== String(recipe.recipe_id)" 

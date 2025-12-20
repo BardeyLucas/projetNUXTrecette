@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
-const search = ref('')
+const route = useRoute()
+
+const search = computed(() => route.query.Search?.toString() || '')
+
 
 const config = useRuntimeConfig()
 // import { RouterLink } from 'vue-router'
@@ -63,7 +66,7 @@ const paginatedRecipes = computed(() => {
 
 if (recipeError && recipeError.value) throw new Error('Failed to fetch recipes')
 
-watch(() => [filters.value, search.value], () => {
+watch(() => [filters.value, search], () => {
   page.value = 1
 })
 

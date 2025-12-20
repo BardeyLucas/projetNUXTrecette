@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { SanitySiteSettings } from '~/types/cms/site-settings'
 
+const headerSearch = ref('')
+
 const props = defineProps<{
   user: Users | null
 }>()
@@ -9,6 +11,16 @@ const query = groq`*[_type == "settingsType"]{ _id, logo, navigation }[0]`
 const { data } = await useLazySanityQuery<SanitySiteSettings>(query)
 const { urlFor } = useSanityImage()
 
+const refreshing = ref(false)
+
+async function refreshAll () {
+  refreshing.value = true
+  try {
+    await refreshNuxtData()
+  } finally {
+    refreshing.value = false
+  }
+}
 </script>
 <template>
   <section class="header__bottom">
@@ -21,10 +33,12 @@ const { urlFor } = useSanityImage()
           <p class="header__shearch-categories_text">All Categories</p>
           <AssetsArrowDown class="header__ArrowDownIcon" />
         </button>
-        <input id="SearchBar" class="header__inputSearch" type="text" placeholder="Search" >
-        <button class="header__buttonShearch">
-          <AssetsSearch class="header__IconButtonShearch" />
-        </button>
+        <input id="SearchBar" v-model="headerSearch" class="header__inputSearch" type="text" placeholder="Search" >
+        <NuxtLink class="header__linkSearch" :to="`/recipe?Search=${headerSearch}`">
+          <button class="header__buttonShearch"  @click="refreshAll">
+            <AssetsSearch class="header__IconButtonShearch" />
+          </button>
+        </NuxtLink>
       </div>
     </section>
     <section class="header__bottomRight">
@@ -114,6 +128,9 @@ const { urlFor } = useSanityImage()
     &::placeholder {
       color: var(--gray-300);
     }
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   &__buttonShearch {
@@ -126,6 +143,7 @@ const { urlFor } = useSanityImage()
     background-color: var(--gray-200);
     border-radius: rem(24) rem(20) rem(20) rem(24);
     min-width: rem(46);
+    height: 100%;
   }
   &__IconButtonShearch {
     width: rem(20);
