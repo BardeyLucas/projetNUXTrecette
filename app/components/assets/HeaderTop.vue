@@ -74,7 +74,7 @@ const props = defineProps<{
       }
     }
   }
-  @media (max-width: rem(950)) {
+  @media (max-width: rem(700)) {
     &__top{
       flex-direction: column-reverse;
       gap: rem(10);
@@ -89,7 +89,7 @@ const props = defineProps<{
     }
   }
   @media (max-width: rem(400)) {
-    &__topLeft_link{
+    &__topLeft_link, &__topRight_link{
       font-size: rem(12);
     }
   }
