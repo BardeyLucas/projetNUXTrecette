@@ -89,7 +89,7 @@ watch(() => [filters.value, search.value], () => {
       </div>
     </aside>
     <section>
-      <p>{{ search }}</p>
+      <p class="homePage__searchResult">{{ search }}</p>
       <section class="homePage__grille_recipes">
         <FoodCards v-for="(recipe, index) in paginatedRecipes" :key="index" :recipe="recipe"/>
       </section>
@@ -143,6 +143,17 @@ watch(() => [filters.value, search.value], () => {
         }
       }
     }
+    &__searchResult{
+       font-family: Montez;
+        font-size: rem(40);
+        color: #84BD00;
+        line-height: 1;
+        margin-top: rem(40);
+        text-transform: capitalize;
+        font-weight: bold;
+        margin-bottom: rem(-20);
+    }
+
     &__grille_recipes{
       display: grid;
       grid-template-columns: repeat(3, 1fr);

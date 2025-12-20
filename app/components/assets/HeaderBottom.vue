@@ -84,7 +84,7 @@ const { urlFor } = useSanityImage()
     font-family: Montserrat;
     border: none;
     display: flex;
-    background-color: #d0c5c543;
+    background-color: rgba(#c5c5c5, 0.17);
     white-space: pre;
     width: fit-content;
     font-size: rem(20);

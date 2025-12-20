@@ -5,6 +5,17 @@ $medium-breakpoint: 768px;
 $large-breakpoint: 1024px;
 $column-number: 12;
 
+//Site Variables
+
+:root {
+  --white: rgb(255, 255, 255);
+  --darkgray: rgb(34, 34, 34);
+  --black: rgb(0, 0, 0);
+  --green: rgb(132, 189, 0);
+}
+
+//Button Variables
+
 :root {
   --noir: rgb(14, 14, 14);
   --grisFonce: rgb(24, 24, 24);
