@@ -66,14 +66,14 @@ const postLogin = async () => {
 
       &_input{
         padding: rem(8);
-        border: rem(2) solid #84BD00;
+        border: rem(2) solid var(--green);
         border-radius: rem(8);
         width: 100%;
       }
 
       &_button{
-        background-color: #84BD00;
-        color: white;
+        background-color: var(--green);
+        color: var(--white);
         border: none;
         border-radius: rem(8);
         padding: rem(10);

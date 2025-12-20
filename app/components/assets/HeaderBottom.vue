@@ -18,7 +18,7 @@ const { urlFor } = useSanityImage()
       </RouterLink>
       <div class="header__search">
         <button class="header__shearch-categories">
-          <p>All Categories</p>
+          <p class="header__shearch-categories_text">All Categories</p>
           <AssetsArrowDown class="header__ArrowDownIcon" />
         </button>
         <input id="SearchBar" class="header__inputSearch" type="text" placeholder="Search" >
@@ -49,7 +49,7 @@ const { urlFor } = useSanityImage()
 <style lang="scss">
 .header {
   &__bottom {
-    background-color: #ffffff;
+    background-color: var(--white);
     display: flex;
     justify-content: space-between;
     padding: rem(20) rem(112);
@@ -73,7 +73,7 @@ const { urlFor } = useSanityImage()
 
   &__search {
     display: flex;
-    border: solid rem(1) #d9d9d9;
+    border: solid rem(1) var(--gray-200);
     border-radius: rem(20);
     overflow: hidden;
     height: rem(48);
@@ -84,7 +84,7 @@ const { urlFor } = useSanityImage()
     font-family: Montserrat;
     border: none;
     display: flex;
-    background-color: #d0c5c543;
+    background-color: var(--gray-100);
     white-space: pre;
     width: fit-content;
     font-size: rem(20);
@@ -106,13 +106,13 @@ const { urlFor } = useSanityImage()
     width: 100%;
 
     &::-webkit-input-placeholder {
-      color: #d9d9d9;
+      color: var(--gray-300);
     }
     &:-ms-input-placeholder {
-      color: #d9d9d9;
+      color: var(--gray-300);
     }
     &::placeholder {
-      color: #d9d9d9;
+      color: var(--gray-300);
     }
   }
 
@@ -123,7 +123,7 @@ const { urlFor } = useSanityImage()
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d9d9d9;
+    background-color: var(--gray-200);
     border-radius: rem(24) rem(20) rem(20) rem(24);
     min-width: rem(46);
   }
@@ -141,7 +141,7 @@ const { urlFor } = useSanityImage()
     height: rem(52);
     border: none;
     display: block;
-    background-color: #00000000;
+    background-color: var(--transparent);
   }
   &__IconShoppingCart_PositionPatcher {
     width: 100%;
@@ -161,7 +161,7 @@ const { urlFor } = useSanityImage()
     left: rem(15);
     width: rem(30);
     height: rem(30);
-    background-color: #84bd00;
+    background-color: var(--green);
     border-radius: rem(1000);
     display: flex;
     align-items: center;
@@ -179,7 +179,7 @@ const { urlFor } = useSanityImage()
     border-radius: rem(1000);
     background-size: cover;
     background-position: center;
-    border: rem(2) solid #858585;
+    border: rem(2) solid var(--gray-300);
   }
   @media (max-width: rem(1200)) {
       &__bottom {
@@ -190,7 +190,7 @@ const { urlFor } = useSanityImage()
       gap: rem(60);
     }
 
-    &__shearch-categories>p{
+    &__shearch-categories_text{
       font-size: rem(14);
     }
     &__inputSearch{

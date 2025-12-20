@@ -79,7 +79,6 @@ const filteredRecipes = computed(() => {
   return results
 })
 
-console.log('Filtered Recipes:', filteredRecipes.value)
 </script>
 
 <template>
@@ -102,13 +101,8 @@ console.log('Filtered Recipes:', filteredRecipes.value)
 </template>
 <style scoped lang="scss">
 
-
-.text {
-  color: black;
-}
-
 .dashboard{
-  background-color: white;
+  background-color: var(--white);
   min-height: 100vh; // s'assure que le fond couvre toute la hauteur de la page
   display: flex;
   align-items: center;
@@ -121,8 +115,8 @@ console.log('Filtered Recipes:', filteredRecipes.value)
   }
 
   &__addRecipeButton{
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--darkgreen);
+    color: var(--white);
     border: none;
     border-radius: rem(8);
     padding: rem(8) rem(16);
@@ -132,8 +126,8 @@ console.log('Filtered Recipes:', filteredRecipes.value)
   }
 
   &__logoutButton{
-    background-color: #ff4d4d;
-    color: white;
+    background-color: var(--red);
+    color: var(--white);
     border: none;
     border-radius: rem(8);
     padding: rem(8) rem(16);

@@ -58,8 +58,8 @@ if (!recipe.value || error.value) {
       }
 
       &_tag {
-        background-color: #84BD00;
-        color: white;
+        background-color: var(--green);
+        color: var(--white);
         padding: rem(4) rem(8);
         border-radius: rem(20);
         font-size: rem(12);
