@@ -51,7 +51,7 @@
   .footer{
   background-color: var(--darkgray);
   display: flex;
-  color: white;
+  color: var(--white);
   padding: rem(25) rem(100);
   justify-content: space-between;
   gap: rem(150);
@@ -107,21 +107,21 @@
 
   &__newsletter-input {
     display: flex;
-    border: solid rem(1) white;
+    border: solid rem(1) var(--white);
     justify-content: space-between;
     padding: 0 rem(20);
 
     & > input {
       border: none;
-      background-color: #00000000;
-      color : white;
+      background-color: var(--transparent);
+      color : var(--white);
       font-size: rem(20);
     }
 
     & > button {
       border: none;
-      background-color: #00000000;
-      color : white;
+      background-color: var(--transparent);
+      color : var(--white);
       padding: 0;
 
       & > svg {
