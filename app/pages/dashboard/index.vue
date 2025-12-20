@@ -79,7 +79,6 @@ const filteredRecipes = computed(() => {
   return results
 })
 
-console.log('Filtered Recipes:', filteredRecipes.value)
 </script>
 
 <template>
