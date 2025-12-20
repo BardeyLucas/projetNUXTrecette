@@ -18,7 +18,7 @@ const { urlFor } = useSanityImage()
       </RouterLink>
       <div class="header__search">
         <button class="header__shearch-categories">
-          <p>All Categories</p>
+          <p class="header__shearch-categories_text">All Categories</p>
           <AssetsArrowDown class="header__ArrowDownIcon" />
         </button>
         <input id="SearchBar" class="header__inputSearch" type="text" placeholder="Search" >
@@ -190,7 +190,7 @@ const { urlFor } = useSanityImage()
       gap: rem(60);
     }
 
-    &__shearch-categories>p{
+    &__shearch-categories_text{
       font-size: rem(14);
     }
     &__inputSearch{
