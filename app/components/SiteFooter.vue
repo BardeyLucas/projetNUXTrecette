@@ -7,39 +7,39 @@
     </div>
     <div class="footer__sectionRight">
       <div class="footer__section_FreshRecipe">
-        <h3>Fresh Recipes</h3>
-        <ul>
-          <li>Recipes</li>
-          <li>Winter salads</li>
-          <li>Organic chicken</li>
-          <li>Beef and Mutton</li>
-          <li>Flavoured Milk</li>
+        <h3 class="footer__section_title">Fresh Recipes</h3>
+        <ul class="footer__section_list">
+          <li class="footer__section_list_item">Recipes</li>
+          <li class="footer__section_list_item">Winter salads</li>
+          <li class="footer__section_list_item">Organic chicken</li>
+          <li class="footer__section_list_item">Beef and Mutton</li>
+          <li class="footer__section_list_item">Flavoured Milk</li>
         </ul>
       </div>
       <div class="footer__section_news">
-        <h3>In News</h3>
-        <ul>
-          <li>Our Blogs</li>
-          <li>Contests/Sweepsatkes</li>
-          <li>Video</li>
-          <li>New Releases</li>
-          <li>Newsletters</li>
+        <h3 class="footer__section_title">In News</h3>
+        <ul class="footer__section_list">
+          <li class="footer__section_list_item">Our Blogs</li>
+          <li class="footer__section_list_item">Contests/Sweepsatkes</li>
+          <li class="footer__section_list_item">Video</li>
+          <li class="footer__section_list_item">New Releases</li>
+          <li class="footer__section_list_item">Newsletters</li>
         </ul>
       </div>
       <div class="footer__section_AboutUs">
-        <h3>About US</h3>
-        <ul>
-          <li>FAQ</li>
-          <li>Our Board</li>
-          <li>Our Staff</li>
-          <li>Contact Us</li>
+        <h3 class="footer__section_title">About US</h3>
+        <ul class="footer__section_list">
+          <li class="footer__section_list_item">FAQ</li>
+          <li class="footer__section_list_item">Our Board</li>
+          <li class="footer__section_list_item">Our Staff</li>
+          <li class="footer__section_list_item">Contact Us</li>
         </ul>
       </div>
       <div class="footer__section_newsletter">
-        <h3>Juin Our Newsletter</h3>
-        <div class="footer__newsletter-input">
-          <input id="email" type="email" placeholder="email">
-          <button>
+        <h3 class="footer__section_newsletter_title">Juin Our Newsletter</h3>
+        <div class="footer__newsletter_input">
+          <input class="footer__newsletter_input_section" id="email" type="email" placeholder="email">
+          <button class="footer__newsletter_input_button" type="submit">
             <AssetsSendMail />
           </button>
         </div>
@@ -77,48 +77,44 @@
     gap: rem(30);
     justify-content: space-between;
     width: 100%;
+  }    
+
+  &__section_title {
+    font-size: rem(20);
   }
 
-  &__section_FreshRecipe, &__section_news, &__section_AboutUs, &__section_newsletter {
-    
+  &__section_list {
+    padding: 0;
 
-    & > h3 {
-     font-size: rem(20);
-    }
-
-    & > ul {
-      padding: 0;
-
-      & > li {
-       list-style: none;
-      }
+    &_item {
+      list-style: none;
     }
   }
 
   &__section_newsletter {
     margin-left: rem(70);
 
-    & > h3 {
+    &_title {
       font-family: montez;
       font-size: rem(40);
       font-weight: normal;
     }
   }
 
-  &__newsletter-input {
+  &__newsletter_input {
     display: flex;
     border: solid rem(1) var(--white);
     justify-content: space-between;
     padding: 0 rem(20);
 
-    & > input {
+    &_section {
       border: none;
       background-color: var(--transparent);
       color : var(--white);
       font-size: rem(20);
     }
 
-    & > button {
+    &_button {
       border: none;
       background-color: var(--transparent);
       color : var(--white);
@@ -157,33 +153,38 @@
       gap: rem(40);
       justify-content: center;
       text-align: center;
-
-      & > div {
-        & > h3 {
-          margin-bottom: 5px;
-        }
-      }
     }
   }
+
+  &__section_title {
+    margin-bottom: 5px;
+  }
+  
   @media (max-width: rem(1160)) {
     &__section_newsletter{
       margin: rem(20);
     }
   }
   @media (max-width: rem(550)) {
-    padding: rem(20) rem(20);  
+    padding: rem(20) rem(20); 
+    
+    &__sectionRight{
+      flex-direction: column;
+    }
+
     &__section_newsletter{
       max-width: calc(100%);
       margin: 0;
-      &  > h3 {
+      &_title {
         font-size: rem(30);
       }
     }
-    &__newsletter-input{
-      padding: 0;
-      margin: 0;
+    &__newsletter_input{
+      padding: 0 rem(10);
+      margin: 0 rem(20);
       gap: 0;
-      & > input {
+
+      &_section{
         font-size: rem(16);
         max-width: calc(100% - rem(60));
       }
