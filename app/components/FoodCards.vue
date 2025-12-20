@@ -90,11 +90,11 @@ async function confirmDelete (recipeId: string | number) {
       justify-content: space-between;
 
       &--confirm {
-        background-color: rgb(255, 137, 137);
+        background-color: var(--lightred);
       }
 
       &__Link {
-        color: black;
+        color: var(--black);
         text-decoration: none;
         font-family: montserrat;
       }
@@ -122,8 +122,8 @@ async function confirmDelete (recipeId: string | number) {
       &__GoalName,
       &__DietName,
       &__AllergyName {
-        background-color: #84BD00;
-        color: white;
+        background-color: var(--green);
+        color: var(--white);
         padding: rem(4) rem(8);
         border-radius: rem(8);
         font-size: rem(12);
@@ -134,8 +134,8 @@ async function confirmDelete (recipeId: string | number) {
         justify-content: center;
       }
       &__Button {
-        background-color: #ff4d4d;
-        color: white;
+        background-color: var(--red);
+        color: var(--white);
         border: none;
         border-radius: rem(8);
         padding: rem(8) rem(16);
