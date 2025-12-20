@@ -113,7 +113,7 @@ watch(() => [filters.value, search.value], () => {
       &_title{
         font-family: Montez;
         font-size: rem(40);
-        color: #84BD00;
+        color: var(--green);
         line-height: 1;
         margin-bottom: rem(20);
       }
@@ -121,7 +121,7 @@ watch(() => [filters.value, search.value], () => {
       &_search{
         width: rem(200);
         height: rem(30);
-        border: rem(2) solid #84BD00;
+        border: rem(2) solid var(--green);
         border-radius: rem(8);
         padding: rem(8);
         margin-bottom: rem(32);
@@ -138,7 +138,7 @@ watch(() => [filters.value, search.value], () => {
         }
 
         &_item_input:checked + &_item_label {
-          color: #84BD00;
+          color: var(--green);
           font-weight: bolder;
         }
       }
@@ -146,7 +146,7 @@ watch(() => [filters.value, search.value], () => {
     &__searchResult{
        font-family: Montez;
         font-size: rem(40);
-        color: #84BD00;
+        color: var(--green);
         line-height: 1;
         margin-top: rem(40);
         text-transform: capitalize;
@@ -173,8 +173,8 @@ watch(() => [filters.value, search.value], () => {
       margin-right: rem(100);
 
       &_button{
-        background-color: #84BD00;
-        color: white;
+        background-color: var(--green);
+        color: var(--white);
         border: none;
         border-radius: rem(16);
         width: rem(32);
@@ -192,8 +192,8 @@ watch(() => [filters.value, search.value], () => {
         font-family: Montserrat;
         font-size: rem(16);
         font-weight: bold;
-        background-color: #84BD00;
-        color: white;
+        background-color: var(--green);
+        color: var(--white);
         border-radius: rem(16);
         padding: rem(2) rem(8);
       }
